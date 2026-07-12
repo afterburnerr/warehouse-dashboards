@@ -53,11 +53,11 @@
   .slide-head .r{ display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); font-size: 1.1rem; color:var(--ink-soft); letter-spacing:.2em; text-transform:uppercase; }
   .blink{ animation: blink 1.2s steps(2,end) infinite; }
   @keyframes blink{ 50%{ opacity:.15; } }
-  .grid{ flex:1; display:grid; gap: 1.2rem; min-height: 0; grid-auto-rows: 1fr; }
+  .grid{ flex:1; display:grid; gap: 1.2rem; min-height: 0; }
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
   @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
-  .cell{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.9rem; position:relative; overflow:hidden; min-height: 0; }
+  .cell{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.9rem; height: clamp(18rem, 55vh, 32rem); justify-content:center; position:relative; overflow:hidden; min-height: 0; }
   .cell::before{ content:""; position:absolute; top:0; left:0; width:1.5rem; height:1.5rem; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
   .cell::after{ content:""; position:absolute; bottom:0; right:0; width:1.5rem; height:1.5rem; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
   .cell .ch{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; display:flex; gap:0.6rem; align-items:baseline; white-space:nowrap; }

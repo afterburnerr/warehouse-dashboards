@@ -95,12 +95,14 @@
   .card{
     background:var(--paper); border:0.125rem solid var(--ink);
     padding: 1.4rem;
-    min-height: 0; height: 100%;
-    display:flex; flex-direction:column; justify-content:space-between; gap: 1rem;
+    min-height: 0; height: clamp(18rem, 55vh, 32rem);
+    display:flex; flex-direction:column; gap: 1rem;
     position:relative;
     box-shadow: 0.4rem 0.4rem 0 0 var(--ink);
   }
-  .grid{ grid-auto-rows: 1fr; }
+  .card.simple{ justify-content:center; }
+  .card.full{ justify-content:space-between; }
+  .grid{ }
   .card > .value + .delta{ margin-top: 1rem; }
   .card > .delta + .note{ margin-top: 0.2rem; }
   .card::after{
@@ -205,10 +207,10 @@
         <div class="stamp">ОБОРОТ · 7 ДНЕЙ</div>
       </div>
       <div class="grid grid-4">
-        <div class="card"><div class="label">Приёмка · сутки</div><div class="value"><span data-k="приёмка_за_сутки">—</span><span class="unit">шт</span></div></div>
-        <div class="card"><div class="label">Приёмка · 7 дней</div><div class="value"><span data-k="приёмка_за_7_дней">—</span><span class="unit">шт</span></div></div>
-        <div class="card"><div class="label">Отгрузка · сутки</div><div class="value"><span data-k="отгрузка_за_сутки">—</span><span class="unit">шт</span></div></div>
-        <div class="card"><div class="label">Отгрузка · 7 дней</div><div class="value"><span data-k="отгрузка_за_7_дней">—</span><span class="unit">шт</span></div></div>
+        <div class="card simple"><div class="label">Приёмка · сутки</div><div class="value"><span data-k="приёмка_за_сутки">—</span><span class="unit">шт</span></div></div>
+        <div class="card simple"><div class="label">Приёмка · 7 дней</div><div class="value"><span data-k="приёмка_за_7_дней">—</span><span class="unit">шт</span></div></div>
+        <div class="card simple"><div class="label">Отгрузка · сутки</div><div class="value"><span data-k="отгрузка_за_сутки">—</span><span class="unit">шт</span></div></div>
+        <div class="card simple"><div class="label">Отгрузка · 7 дней</div><div class="value"><span data-k="отгрузка_за_7_дней">—</span><span class="unit">шт</span></div></div>
       </div>
       <div class="progress"><i></i></div>
     </section>
@@ -223,12 +225,12 @@
         <div class="stamp">ОПЕРАТИВНАЯ НАГРУЗКА</div>
       </div>
       <div class="grid grid-2">
-        <div class="card">
+        <div class="card full">
           <div class="label">Задач в работе</div>
           <div class="value"><span data-k="задач_в_работе">—</span></div>
           <div class="note">все активные задачи смены</div>
         </div>
-        <div class="card">
+        <div class="card full">
           <div class="label">ТЕ в зоне приёмки</div>
           <div class="value"><span data-k="те_в_зоне_приёмки">—</span></div>
           <div class="note">транспортные единицы</div>
@@ -247,11 +249,11 @@
         <div class="stamp">ОЖИДАЕТСЯ</div>
       </div>
       <div class="grid grid-2">
-        <div class="card">
+        <div class="card simple">
           <div class="label">Ожидается отгрузок</div>
           <div class="value"><span data-k="ожидается_отгрузок">—</span></div>
         </div>
-        <div class="card">
+        <div class="card simple">
           <div class="label">Ожидается приёмок</div>
           <div class="value"><span data-k="ожидается_приёмок">—</span></div>
         </div>
@@ -269,12 +271,12 @@
         <div class="stamp">ОБЩИЕ ПОКАЗАТЕЛИ</div>
       </div>
       <div class="grid grid-2">
-        <div class="card">
+        <div class="card full">
           <div class="label">Заблокированные ячейки</div>
           <div class="value"><span data-k="заблокированные_ячейки">—</span></div>
           <div class="delta" data-d="изменение_заблокированных">—</div>
         </div>
-        <div class="card">
+        <div class="card full">
           <div class="label">Заполненность склада</div>
           <div class="value"><span data-k="заполненность_склада">—</span><span class="unit">%</span></div>
           <div class="delta" data-d="изменение_заполненности">—</div>
