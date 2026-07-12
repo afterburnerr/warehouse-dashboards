@@ -10,9 +10,9 @@
 <style>
   :root{
     --slide-seconds: 15;
-    --reload-ms: 180000;
+--reload-ms: 180000;
 
-    /* rem-база от viewport: 1920×1080 → 16px. Масштабируется линейно. */
+    /* rem-база: 1080p → ~14px, 4K → ~22px */
     font-size: clamp(12px, 0.55vw + 0.55vh + 0.3vmin, 22px);
 
     --bg: #f5f1ea;
@@ -100,6 +100,7 @@
     position:relative;
     box-shadow: 0.4rem 0.4rem 0 0 var(--ink);
   }
+  .grid{ grid-auto-rows: 1fr; min-height: 60vh; }
   .card > .value + .delta{ margin-top: 1rem; }
   .card > .delta + .note{ margin-top: 0.2rem; }
   .card::after{
@@ -112,7 +113,7 @@
     font-size: 2.2rem; color:var(--ink-soft);
   }
   .card .value{
-    font-family:var(--font-serif); font-weight:700; font-size: clamp(5rem, 18cqi, 22rem);
+    font-family:var(--font-serif); font-weight:700; font-size: clamp(5rem, 11cqi, 22rem);
     line-height:.85; letter-spacing:-.03em;
   }
   .card .value .unit{
