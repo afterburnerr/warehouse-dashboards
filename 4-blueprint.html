@@ -61,11 +61,11 @@
   .slide-head .tag{ font-family:var(--font-mono); font-size: 1.1rem; color:var(--ink-soft); letter-spacing:.26em; text-transform:uppercase; }
   .slide-head h1{ font-family:var(--font-mono); font-weight:700; font-size: 3rem; margin:0; letter-spacing:-.01em; text-transform:uppercase; }
   .slide-head .r{ display:flex; flex-direction:column; align-items:flex-end; gap:0.3rem; font-family:var(--font-mono); font-size: 1.1rem; color:var(--ink-soft); letter-spacing:.16em; text-transform:uppercase; text-align:right; }
-  .grid{ display:grid; gap: 1.2rem; align-content:start; align-items:start; min-height: 0; }
+  .grid{ display:grid; gap: 1.2rem; align-content:start; align-items:start; min-height: 50vh; }
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
   @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
-  .card{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.7rem; justify-content:flex-start; position:relative; min-height: 65vh; min-width: 0; }
+  .card{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.7rem; justify-content:flex-start; position:relative; min-height: 0; min-width: 0; }
   .card .lbl{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink-soft); letter-spacing:.08em; text-transform:uppercase; display:flex; justify-content:space-between; font-weight:700; white-space:nowrap; }
   .card .lbl .num{ color:var(--ink-faint); }
   .card .val{ font-family:var(--font-mono); font-weight:700; font-size: clamp(4rem, 10vw, 14rem);  line-height:.88; letter-spacing:-.01em; color:var(--ink); }
