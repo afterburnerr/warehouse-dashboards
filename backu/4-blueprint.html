@@ -11,7 +11,7 @@
   :root{
     --slide-seconds: 15;
     --reload-ms: 180000;
-    font-size: clamp(14px, 0.4vw + 0.4vh + 0.4vmin, 48px);
+    font-size: clamp(14px, 0.4vw + 0.4vh + 0.4vmin, 36px);
     --bg: #0c1f3a;
     --bg-2: #102849;
     --panel: #0f2543;
@@ -47,59 +47,57 @@
       linear-gradient(to top, var(--rule) 0, var(--rule) 1px, transparent 1px, transparent 100%) right bottom / 1px 100% no-repeat;
     z-index:5;
   }
-  .app{ position:relative; z-index:1; height:100vh; display:flex; flex-direction:column; padding: 1.2rem 2.4rem; overflow:hidden; }
-  .topbar{ flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; }
-  .brand{ display:flex; align-items:center; gap:0.6rem; font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase; font-size: 1.1rem; color:var(--ink); white-space:nowrap; }
-  .brand-mark{ width: 2.2rem; height: 2.2rem; border:1px solid var(--ink); display:flex; align-items:center; justify-content:flex-start; font-family:var(--font-mono); font-weight:700; font-size: 1.3rem; flex-shrink:0; }
-  .clock-stamp{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink); display:flex; gap:0.9rem; align-items:baseline; white-space:nowrap; flex-shrink:0; }
-  .clock-stamp .time{ font-weight:700; font-size: 4.48rem; color:var(--accent); letter-spacing:.04em; }
-  .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.12em; text-transform:uppercase; font-size: 2.24rem; }
-  .slides{ position:relative; flex:1 1 auto; min-height:0; margin-top: 0.6rem; margin-bottom: 0.6rem; overflow:hidden; }
-  .slide{ position:absolute; inset:0; display:flex; flex-direction:column; opacity:0; transition: opacity .55s ease; pointer-events:none; min-height:0; overflow:hidden; }
+  .app{ position:relative; z-index:1; height:100vh; display:flex; flex-direction:column; padding: 1.6rem 3.5rem; }
+  .brand{ display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase; font-size: 0.85rem; color:var(--ink); }
+  .brand-mark{ width: 2.5rem; height: 2.5rem; border:1px solid var(--ink); display:flex; align-items:center; justify-content:flex-start; font-family:var(--font-mono); font-weight:700; font-size: 1.6rem; }
+  .clock-stamp{ position:absolute; top: 1.6rem; right: 3.5rem; font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink); display:flex; gap:0.9rem; align-items:baseline; }
+  .clock-stamp .time{ font-weight:700; font-size: 3.4rem; color:var(--accent); }
+  .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.16em; }
+  .slides{ position:relative; flex:1; min-height:0; margin-top: 1.6rem; margin-bottom: 1.2rem; }
+  .slide{ position:absolute; inset:0; display:flex; flex-direction:column; opacity:0; transition: opacity .55s ease; pointer-events:none; min-height:0; }
   .slide.active{ opacity:1; pointer-events:auto; }
   .slide-head{ display:flex; align-items:flex-end; justify-content:space-between; padding-bottom: 0.8rem; margin-bottom: 1.4rem; border-bottom: 1px solid var(--rule); }
   .slide-head .l{ display:flex; flex-direction:column; gap:0.4rem; }
   .slide-head .tag{ font-family:var(--font-mono); font-size: 1.1rem; color:var(--ink-soft); letter-spacing:.26em; text-transform:uppercase; }
-  .slide-head h1{ font-family:var(--font-mono); font-weight:700; font-size: clamp(2.4rem, 3.6vw, 6rem); margin:0; letter-spacing:-.01em; text-transform:uppercase; }
+  .slide-head h1{ font-family:var(--font-mono); font-weight:700; font-size: 3rem; margin:0; letter-spacing:-.01em; text-transform:uppercase; }
   .slide-head .r{ display:flex; flex-direction:column; align-items:flex-end; gap:0.3rem; font-family:var(--font-mono); font-size: 1.1rem; color:var(--ink-soft); letter-spacing:.16em; text-transform:uppercase; text-align:right; }
-  .grid{ flex:1 1 auto; min-height:0; display:grid; gap: 1rem; }
+  .grid{ display:grid; gap: 1.2rem; align-content:start; align-items:start; min-height: 50vh; }
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
-  .grid-4{ grid-template-columns:repeat(4,1fr); grid-template-rows: 1fr; }
-  @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); grid-template-rows: 1fr 1fr; } }
-  .card{ background:var(--panel); border:1px solid var(--rule); padding: 1rem 1.2rem; display:flex; flex-direction:column; gap: 0.6rem; justify-content:center; position:relative; min-height: 0; min-width: 0; overflow:hidden; }
-  .card .lbl{ font-family:var(--font-mono); font-size: 2.38rem; color:var(--ink-soft); letter-spacing:.08em; text-transform:uppercase; display:flex; justify-content:space-between; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .grid-4{ grid-template-columns:repeat(4,1fr); }
+  @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
+  .card{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.7rem; justify-content:flex-start; position:relative; min-height: 0; min-width: 0; }
+  .card .lbl{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink-soft); letter-spacing:.08em; text-transform:uppercase; display:flex; justify-content:space-between; font-weight:700; white-space:nowrap; }
   .card .lbl .num{ color:var(--ink-faint); }
-  .card .val{ font-family:var(--font-mono); font-weight:700; font-size: clamp(6.76rem, 18.59vw, 23.66rem); line-height:.88; letter-spacing:-.01em; color:var(--ink); }
-  .card .val .unit{ font-size: inherit; color:var(--ink-soft); margin-left:0.4rem; font-weight:400; }
-  .card .val .unit.unit-pct{ font-size: inherit; }
-  .card .val .unit.unit-unit{ font-size: 2rem; }
+  .card .val{ font-family:var(--font-mono); font-weight:700; font-size: clamp(4rem, 10vw, 14rem);  line-height:.88; letter-spacing:-.01em; color:var(--ink); }
+  .card .val .unit{ font-size: 1.4rem; color:var(--ink-soft); margin-left:0.4rem; font-weight:400; }
   .card .dim{ font-family:var(--font-mono); font-size: 1.2rem; color:var(--ink-faint); letter-spacing:.14em; }
-  .delta{ font-family:var(--font-mono); font-weight:700; padding:0.5rem 1.1rem; border:1px solid currentColor; letter-spacing:.14em; align-self:flex-start; font-size: 3.45rem; }
+  .delta{ font-family:var(--font-mono); font-weight:700; padding:0.5rem 1.1rem; border:1px solid currentColor; letter-spacing:.14em; align-self:flex-start; font-size: 1.5rem; }
   .card-sm{ padding: 1.1rem; gap: 0.5rem; }
-  .card-sm .val{ font-size: clamp(6.76rem, 18.59vw, 23.66rem); }
-  .card-sm .lbl{ font-size: 2.95rem; }
+  .card-sm .val{ font-size: clamp(4rem, 9vw, 13rem); }
+  .card-sm .lbl{ font-size: 1.6rem; }
   .delta.pos{ color:var(--positive); }
   .delta.neg{ color:var(--negative); }
-  .transport{ flex:1 1 auto; min-height:0; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; gap: 1rem; }
-  .t-left{ background:var(--panel); border:1px solid var(--rule); padding: 1rem 1.2rem; display:flex; flex-direction:column; gap: 1rem; min-height: 0; justify-content:flex-start; box-sizing:border-box; position:relative; overflow:hidden; }
-  .t-left .lbl{ font-family:var(--font-mono); font-size: 2.4rem; color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .t-left .big{ font-family:var(--font-mono); font-weight:700; font-size: clamp(6.5rem, 15.2vw, 21.7rem); line-height:.85; }
-  .t-left .meta-bottom{ display:flex; justify-content:space-between; align-items:flex-end; gap: 0.75rem; font-family:var(--font-mono); font-size: 2.4rem; color:var(--ink-soft); line-height:1.4; font-weight:700; letter-spacing:.18em; text-transform:uppercase; margin-top: auto; padding-top: 1rem; }
+  .transport{ flex:1; display:grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; min-height:0; align-items:start; padding-bottom: 1.8rem; }
+  .t-left{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 1rem; min-height: 65vh; justify-content:flex-start; box-sizing:border-box; position:relative; }
+  .t-left .lbl{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; font-weight:700; }
+  .t-left .big{ font-family:var(--font-mono); font-weight:700; font-size: clamp(6rem, 14vw, 18rem); line-height:.85; }
+  .t-left .meta-bottom{ display:flex; justify-content:space-between; align-items:flex-end; gap: 0.75rem; font-family:var(--font-mono); font-size: 1.6rem; color:var(--ink-soft); line-height:1.4; font-weight:700; letter-spacing:.18em; text-transform:uppercase; margin-top: auto; padding-top: 1rem; }
   .t-left .meta-bottom .qty{ font-family:var(--font-mono); color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; white-space:nowrap; display:inline-flex; align-items:flex-end; gap: 0.4rem; }
-  .t-left .meta-bottom .qty .num{ font-size: clamp(4.2rem, 9.6vw, 12rem); color:var(--ink); line-height:.85; letter-spacing:0; text-transform:none; font-weight:700; }
+  .t-left .meta-bottom .qty .num{ font-size: clamp(4rem, 9vw, 12rem); color:var(--ink); line-height:.85; letter-spacing:0; text-transform:none; font-weight:700; }
   .t-left .meta-bottom .qty .unit{ font-size: 1.8rem; color:var(--ink-soft); }
-  .t-right{ display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; gap: 1rem; min-height:0; }
-  .t-ev{ background:var(--panel); border:1px solid var(--rule); padding: 1.2rem; display:flex; flex-direction:column; gap: 0.5rem; justify-content:center; position:relative; overflow:hidden; }
-  .t-ev .lbl{ font-family:var(--font-mono); font-size: 1.66rem; color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .t-ev .name{ font-family:var(--font-mono); font-weight:700; font-size: clamp(2.6rem, 5.4vw, 7rem); letter-spacing:.04em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.3; }
-  .t-ev .when{ font-family:var(--font-mono); font-weight:700; font-size: 4.05rem; color:var(--ink-soft); letter-spacing:.06em; }
-  .t-ev.departed .name::before{ content:"▲"; color:var(--negative); font-size: 6rem; margin-right:0.4rem; display:block; line-height:1; margin-bottom:0.3rem; }
-  .t-ev.arrived .name::before{ content:"▼"; color:var(--positive); font-size: 6rem; margin-right:0.4rem; display:block; line-height:1; margin-bottom:0.3rem; }
-  .progress{ position:absolute; left:0; right:0; bottom:0; height:0.2rem; background:var(--rule-soft); overflow:hidden; }
+  .t-right{ display:grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; min-height:0; }
+  .t-ev{ background:var(--panel); border:1px solid var(--rule); padding: 1.2rem; display:flex; flex-direction:column; gap: 0.5rem; position:relative; }
+  .t-ev .lbl{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; font-weight:700; }
+  .t-ev .name{ font-family:var(--font-mono); font-weight:700; font-size: clamp(3rem, 7vw, 9rem); letter-spacing:.04em; }
+  .t-ev .when{ font-family:var(--font-mono); font-weight:700; font-size: 1.8rem; color:var(--ink-soft); letter-spacing:.06em; }
+  .t-ev.departed .name::before{ content:"▲ "; color:var(--negative); font-size: clamp(1.8rem, 3vw, 4rem); margin-right:0.4rem; }
+  .t-ev.arrived .name::before{ content:"▼ "; color:var(--positive); font-size: clamp(1.8rem, 3vw, 4rem); margin-right:0.4rem; }
+  .progress{ position:absolute; left:0; right:0; bottom:1.5rem; height:0.2rem; background:var(--rule-soft); overflow:hidden; }
   .progress > i{ display:block; width:0; background:var(--accent); }
   .slide.active .progress > i{ animation: fill var(--slide-seconds) linear forwards; }
   @keyframes fill{ from{width:0} to{width:100%} }
-  .footer{ flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; gap:0.9rem; font-family:var(--font-mono); font-size: 0.85rem; color:var(--ink-soft); letter-spacing:.22em; text-transform:uppercase; border-top:1px solid var(--rule-soft); padding-top:0.4rem; margin-top:0.2rem; }
+  .stamp{ position:absolute; bottom: 1.6rem; right: 3.5rem; font-family:var(--font-mono); font-size: 0.8rem; color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; border:1px solid var(--rule); padding:0.4rem 0.75rem; background:rgba(15,37,67,.6); }
+  .footer{ position:absolute; bottom: 1.6rem; left: 3.5rem; display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); font-size: 0.85rem; color:var(--ink-soft); letter-spacing:.22em; text-transform:uppercase; }
   .footer .dots{ display:flex; gap:0.5rem; }
   .footer .dots i{ display:block; width:0.7rem; height:0.7rem; border:1px solid var(--ink-soft); }
   .footer .dots i.active{ background:var(--accent); border-color:var(--accent); }
@@ -107,15 +105,13 @@
 </head>
 <body>
 <div class="app">
-  <div class="topbar">
-    <div class="brand">
-      <div class="brand-mark">W</div>
-      <div>Карта склада</div>
-    </div>
-    <div class="clock-stamp">
-      <span class="date" id="clock-date">—</span>
-      <span class="time" id="clock-time">—</span>
-    </div>
+  <div class="brand">
+    <div class="brand-mark">W</div>
+    <div>Карта склада</div>
+  </div>
+  <div class="clock-stamp">
+    <span class="date" id="clock-date">—</span>
+    <span class="time" id="clock-time">—</span>
   </div>
   <div class="slides" id="slides">
     <section class="slide" data-slide="0">
@@ -124,10 +120,10 @@
         <div class="r"></div>
       </div>
       <div class="grid grid-4">
-        <div class="card"><div class="lbl"><span>ПРИЁМКА · 24Ч</span></div><div class="val"><span data-k="приёмка_за_сутки">—</span><span class="unit unit-unit">шт</span></div></div>
-        <div class="card"><div class="lbl"><span>ПРИЁМКА · 7 ДН</span></div><div class="val"><span data-k="приёмка_за_7_дней">—</span><span class="unit unit-unit">шт</span></div></div>
-        <div class="card"><div class="lbl"><span>ОТГРУЗКА · 24Ч</span></div><div class="val"><span data-k="отгрузка_за_сутки">—</span><span class="unit unit-unit">шт</span></div></div>
-        <div class="card"><div class="lbl"><span>ОТГРУЗКА · 7 ДН</span></div><div class="val"><span data-k="отгрузка_за_7_дней">—</span><span class="unit unit-unit">шт</span></div></div>
+        <div class="card"><div class="lbl"><span>ПРИЁМКА · 24Ч</span></div><div class="val"><span data-k="приёмка_за_сутки">—</span><span class="unit">шт</span></div></div>
+        <div class="card"><div class="lbl"><span>ПРИЁМКА · 7Д</span></div><div class="val"><span data-k="приёмка_за_7_дней">—</span><span class="unit">шт</span></div></div>
+        <div class="card"><div class="lbl"><span>ОТГРУЗКА · 24Ч</span></div><div class="val"><span data-k="отгрузка_за_сутки">—</span><span class="unit">шт</span></div></div>
+        <div class="card"><div class="lbl"><span>ОТГРУЗКА · 7Д</span></div><div class="val"><span data-k="отгрузка_за_7_дней">—</span><span class="unit">шт</span></div></div>
       </div>
       <div class="progress"><i></i></div>
     </section>
@@ -163,11 +159,15 @@
           <div class="lbl"><span>ЗАБЛОКИР. ЯЧЕЕК</span></div>
           <div class="val"><span data-k="заблокированные_ячейки">—</span></div>
           <div class="delta" data-d="изменение_заблокированных">—</div>
+
+          
         </div>
         <div class="card card-sm">
           <div class="lbl"><span>ЗАПОЛНЕННОСТЬ</span></div>
-          <div class="val"><span data-k="заполненность_склада">—</span><span class="unit unit-pct">%</span></div>
+          <div class="val"><span data-k="заполненность_склада">—</span><span class="unit">%</span></div>
           <div class="delta" data-d="изменение_заполненности">—</div>
+
+          
         </div>
       </div>
       <div class="progress"><i></i></div>
@@ -178,11 +178,11 @@
         <div class="r"></div>
       </div>
       <div class="transport">
-        <div class="t-left">
-          <div class="lbl">Транспорт</div>
-          <div class="big"><span data-k="транспорт_за_сутки">—</span></div>
-          <div class="meta-bottom"><span>оформлено · 7 ДН</span><span class="qty"><span class="num"><span data-k="транспорт_за_7_дней">—</span></span><span class="unit">шт</span></span></div>
-        </div>
+<div class="t-left">
+            <div class="lbl">Транспорт</div>
+            <div class="big">12</div>
+            <div class="meta-bottom"><span>оформлено · 7д</span><span class="qty"><span class="num">80</span><span class="unit">шт</span></span></div>
+          </div>
         <div class="t-right">
           <div class="t-ev departed">
             <div class="lbl">Последний убывший</div>
@@ -204,6 +204,7 @@
     <div class="dots" id="dots"><i data-dot="0"></i><i data-dot="1"></i><i data-dot="2"></i><i data-dot="3"></i><i data-dot="4"></i></div>
     <div>5 секций · 15 сек</div>
   </div>
+  
 </div>
 <script src="data.js"></script>
 <script>

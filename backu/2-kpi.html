@@ -26,20 +26,20 @@
   }
   *{ box-sizing:border-box; }
   html,body{ margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:var(--font-display); overflow:hidden; letter-spacing:.02em; }
-  .app{ height:100vh; display:flex; flex-direction:column; padding: 0.52rem 1.75rem; position:relative; }
+  .app{ height:100vh; display:flex; flex-direction:column; padding: 1.5rem 3rem; position:relative; }
   .topbar{ flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; }
-  .brand{ display:flex; flex-direction:row !important; align-items:center; gap:0.6rem; font-family:var(--font-mono); letter-spacing:.32em; text-transform:uppercase; font-size: 1rem; color:var(--ink); }
-  .brand-mark{ width: 2.4rem; height: 2.4rem; background:var(--accent); color:var(--bg); display:flex; align-items:center; justify-content:flex-start; font-family:var(--font-display); font-size: 1.8rem; line-height:1; flex:0 0 auto; }
+  .brand{ display:flex; flex-direction:row !important; align-items:center; gap:1rem; font-family:var(--font-mono); letter-spacing:.32em; text-transform:uppercase; font-size: 1.4rem; color:var(--ink); }
+  .brand-mark{ width: 3.8rem; height: 3.8rem; background:var(--accent); color:var(--bg); display:flex; align-items:center; justify-content:flex-start; font-family:var(--font-display); font-size: 2.8rem; line-height:1; flex:0 0 auto; }
   .brand > div{ line-height:1; }
   .clock-stamp{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink); display:flex; gap:0.9rem; align-items:baseline; }
-  .clock-stamp .time{ font-weight:700; font-size: 4.48rem; color:var(--accent); letter-spacing:.04em; }
-  .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.12em; text-transform:uppercase; font-size: 2.24rem; }
-  .slides{ position:relative; flex:1 1 auto; min-height:0; margin-top: 0.4rem; margin-bottom: 0.4rem; }
-  .slide{ position:absolute; inset:0; display:flex; flex-direction:column; opacity:0; transition: opacity .55s ease; pointer-events:none; overflow:hidden; }
+  .clock-stamp .time{ font-weight:700; font-size: 3.4rem; color:var(--accent); letter-spacing:.05em; }
+  .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; }
+  .slides{ position:relative; flex:1 1 auto; min-height:0; margin-top: 1.2rem; margin-bottom: 1.2rem; }
+  .slide{ position:absolute; inset:0; display:flex; flex-direction:column; opacity:0; transition: opacity .55s ease; pointer-events:none; }
   .slide.active{ opacity:1; pointer-events:auto; }
-  .slide-head{ display:flex; align-items:flex-end; justify-content:space-between; padding-bottom: 0.8rem; margin-top: 0.8rem; margin-bottom: 1.4rem; border-bottom: 0.125rem solid var(--ink); }
+  .slide-head{ display:flex; align-items:flex-end; justify-content:space-between; padding-bottom: 0.8rem; margin-bottom: 1.4rem; border-bottom: 0.125rem solid var(--ink); }
   .slide-head .num{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink-soft); letter-spacing:.32em; align-self:flex-end; padding-bottom: 0.5rem; }
-  .slide-head h1{ font-family:var(--font-display); font-weight:400; font-size: 6rem; line-height:.85; margin:0; text-transform:uppercase; }
+  .slide-head h1{ font-family:var(--font-display); font-weight:400; font-size: clamp(3rem, 7vw, 11rem); line-height:.85; margin:0; text-transform:uppercase; }
   .slide-head h1 em{ color:var(--accent); font-style:normal; }
   .slide-head .live{ font-family:var(--font-mono); font-size: 1rem; letter-spacing:.32em; text-transform:uppercase; color:var(--ink-soft); display:flex; align-items:center; gap:0.5rem; }
   .live::before{ content:""; width:0.6rem; height:0.6rem; background:var(--accent); border-radius:50%; animation: pulse 1.2s ease-in-out infinite; }
@@ -50,33 +50,33 @@
   @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); grid-template-rows: 1fr 1fr; } }
   .tile{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.5rem; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; min-height: 0; min-width: 0; }
   .tile::before{ content:""; position:absolute; top:0; left:0; right:0; height:0.25rem; background:var(--accent); }
-  .tile .label{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.08em; font-size: 2.27rem; color:var(--ink-soft); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .tile .value{ font-family:var(--font-display); font-weight:400; font-size: clamp(6.76rem, 18.59vw, 23.66rem);  line-height:.82; letter-spacing:-.01em; margin-top:0.4rem; }
+  .tile .label{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.08em; font-size: 1.8rem; color:var(--ink-soft); white-space:nowrap; }
+  .tile .value{ font-family:var(--font-display); font-weight:400; font-size: clamp(6rem, 15vw, 22rem);  line-height:.82; letter-spacing:-.01em; margin-top:0.4rem; }
   .tile .value .unit{ font-size: 2.2rem; color:var(--ink-soft); margin-left:0.4rem; letter-spacing:.12em; }
   .tile .foot{ display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size: 1.6rem; color:var(--ink-soft); }
-  .delta{ font-family:var(--font-mono); font-weight:700; padding:0.5rem 1.2rem; border:1px solid currentColor; letter-spacing:.14em; font-size: 2.64rem; }
+  .delta{ font-family:var(--font-mono); font-weight:700; padding:0.5rem 1.1rem; border:1px solid currentColor; letter-spacing:.14em; font-size: 2.2rem; }
   .delta.pos{ color:var(--positive); }
   .delta.neg{ color:var(--negative); }
   .transport{ flex:1 1 auto; min-height:0; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; gap: 1.2rem; }
   .t-left{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.5rem; display:flex; flex-direction:column; justify-content:flex-start; gap: 1rem; }
   .t-left .lbl{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.22em; color:var(--ink-soft); font-size: 1.8rem; }
-  .t-left .big{ font-family:var(--font-display); font-size: clamp(6.5rem, 15.2vw, 21.7rem); line-height:.85; margin-top:1rem; }
+  .t-left .big{ font-family:var(--font-display); font-size: clamp(6rem, 14vw, 18rem); line-height:.85; margin-top:1rem; }
   .t-left .row{ display:flex; align-items:baseline; justify-content:space-between; gap: 1rem; border-top:1px dashed var(--rule); margin-top: auto; padding-top: 1rem; }
-  .t-left .row .num{ font-family:var(--font-display); font-size: clamp(4.2rem, 9.6vw, 12rem); white-space:nowrap; }
+  .t-left .row .num{ font-family:var(--font-display); font-size: clamp(3.5rem, 8vw, 10rem); white-space:nowrap; }
   .t-left .row .num small{ font-size:.55em; color:var(--ink-soft); margin-left:0.4rem; }
   .t-right{ display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; gap: 1.2rem; min-height:0; }
   .t-ev{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.4rem; flex:1; display:flex; flex-direction:column; gap: 0.9rem; justify-content:flex-start; }
   .t-ev .lbl{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.22em; color:var(--ink-soft); font-size: 1.8rem; }
-  .t-ev .name{ font-family:var(--font-mono); font-weight:700; font-size: clamp(2.6rem, 5.4vw, 7rem); letter-spacing:.04em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.1; }
-  .t-ev .when{ font-family:var(--font-mono); font-weight:700; font-size: 4.05rem; color:var(--ink-soft); letter-spacing:.06em; }
+  .t-ev .name{ font-family:var(--font-mono); font-weight:700; font-size: clamp(3rem, 7vw, 9rem); letter-spacing:.04em; }
+  .t-ev .when{ font-family:var(--font-mono); font-weight:700; font-size: 1.8rem; color:var(--ink-soft); letter-spacing:.06em; }
   .t-ev .name::before{ content:"▸ "; color:var(--accent); }
   .t-ev.departed .name::before{ content:"▴ "; }
   .t-ev.arrived .name::before{ content:"▾ "; color:var(--positive); }
-  .progress{ position:absolute; left:0; right:0; bottom:0; height:0.25rem; background:var(--rule); overflow:hidden; }
+  .progress{ position:absolute; left:0; right:0; bottom:-1.6rem; height:0.25rem; background:var(--rule); overflow:hidden; }
   .progress > i{ display:block; width:0; background:var(--accent); }
   .slide.active .progress > i{ animation: fill var(--slide-seconds) linear forwards; }
   @keyframes fill{ from{width:0} to{width:100%} }
-  .footer{ flex:none; display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size: 0.85rem; color:var(--ink-soft); letter-spacing:.28em; text-transform:uppercase; padding:0.6rem 3rem; }
+  .footer{ flex:none; display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size: 0.85rem; color:var(--ink-soft); letter-spacing:.28em; text-transform:uppercase; padding-top:0.6rem; }
   .footer .dots{ display:flex; gap:0.6rem; }
   .footer .dots i{ display:block; width:0.7rem; height:0.7rem; border:1px solid var(--ink-soft); }
   .footer .dots i.active{ background:var(--accent); border-color:var(--accent); }
@@ -102,10 +102,10 @@
         <div class="num">01 / 05</div>
       </div>
       <div class="grid grid-4">
-        <div class="tile"><div class="label">Приёмка · 24Ч</div><div class="value"><span data-k="приёмка_за_сутки">—</span></div><div class="foot"><span>шт</span><span>▲</span></div></div>
-        <div class="tile"><div class="label">Приёмка · 7 ДН</div><div class="value"><span data-k="приёмка_за_7_дней">—</span></div><div class="foot"><span>шт</span><span>▲</span></div></div>
-        <div class="tile"><div class="label">Отгрузка · 24Ч</div><div class="value"><span data-k="отгрузка_за_сутки">—</span></div><div class="foot"><span>шт</span><span>▼</span></div></div>
-        <div class="tile"><div class="label">Отгрузка · 7 ДН</div><div class="value"><span data-k="отгрузка_за_7_дней">—</span></div><div class="foot"><span>шт</span><span>▼</span></div></div>
+        <div class="tile"><div class="label">Приёмка · сутки</div><div class="value"><span data-k="приёмка_за_сутки">—</span></div><div class="foot"><span>шт</span><span>▲</span></div></div>
+        <div class="tile"><div class="label">Приёмка · 7 дней</div><div class="value"><span data-k="приёмка_за_7_дней">—</span></div><div class="foot"><span>шт</span><span>▲</span></div></div>
+        <div class="tile"><div class="label">Отгрузка · сутки</div><div class="value"><span data-k="отгрузка_за_сутки">—</span></div><div class="foot"><span>шт</span><span>▼</span></div></div>
+        <div class="tile"><div class="label">Отгрузка · 7 дней</div><div class="value"><span data-k="отгрузка_за_7_дней">—</span></div><div class="foot"><span>шт</span><span>▼</span></div></div>
       </div>
       <div class="progress"><i></i></div>
     </section>
@@ -168,7 +168,7 @@
           <div class="lbl">Оформлено ТС</div>
           <div class="big"><span data-k="транспорт_за_сутки">—</span></div>
           <div class="row">
-            <span class="lbl">За 7 дн</span>
+            <span class="lbl">За 7 дней</span>
             <span class="num"><span data-k="транспорт_за_7_дней">—</span><small>шт</small></span>
           </div>
         </div>

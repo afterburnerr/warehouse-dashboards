@@ -1,384 +1,757 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Склад · Канбан</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --slide-seconds: 15;
---reload-ms: 180000;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Склад · Канбан</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --slide-seconds: 15;
+            --reload-ms: 180000;
 
-    /* rem-база: 1080p → ~16px, 4K → ~32px, 8K → ~48px */
-    font-size: clamp(14px, 0.4vw + 0.4vh + 0.4vmin, 36px);
+            /* ── ИДЕАЛЬНОЕ МАСШТАБИРОВАНИЕ ДЛЯ 65–75" TV ── */
+            /* база: 4K → ~44–48px, 1080p → ~22–26px, промежуточные → плавно */
+            font-size: clamp(14px, 0.4vw + 0.4vh + 0.4vmin, 48px);
 
-    --bg: #f5f1ea;
-    --paper: #fbf8f2;
-    --ink: #0a0a0a;
-    --ink-soft: #5a5a5a;
-    --ink-faint: #a8a39a;
-    --rule: #0a0a0a;
-    --positive: #1f5e3a;
-    --negative: #8a1c1c;
-    --logo: #0a0a0a;
+            --bg: #f5f1ea;
+            --paper: #fbf8f2;
+            --ink: #0a0a0a;
+            --ink-soft: #5a5a5a;
+            --ink-faint: #a8a39a;
+            --rule: #0a0a0a;
+            --positive: #1f5e3a;
+            --negative: #8a1c1c;
+            --logo: #0a0a0a;
 
-    --font-serif: "IBM Plex Serif", Georgia, serif;
-    --font-mono: "IBM Plex Mono", "Courier New", monospace;
-  }
+            --font-serif: "IBM Plex Serif", Georgia, serif;
+            --font-mono: "IBM Plex Mono", "Courier New", monospace;
+        }
 
-  *{ box-sizing:border-box; }
-  html,body{ margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:var(--font-serif); overflow:hidden; }
+        * {
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--font-serif);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
 
-  /* тонкая фоновая сетка */
-  body::before{
-    content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
-    background-image:
-      repeating-linear-gradient(0deg, transparent 0, transparent 2.5rem, rgba(10,10,10,.05) 2.5rem, rgba(10,10,10,.05) 2.55rem),
-      repeating-linear-gradient(90deg, transparent 0, transparent 2.5rem, rgba(10,10,10,.05) 2.5rem, rgba(10,10,10,.05) 2.55rem);
-  }
+        /* тонкая фоновая сетка — масштабируется вместе с rem */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent 0, transparent 2.5rem, rgba(10, 10, 10, .05) 2.5rem, rgba(10, 10, 10, .05) 2.55rem),
+                repeating-linear-gradient(90deg, transparent 0, transparent 2.5rem, rgba(10, 10, 10, .05) 2.5rem, rgba(10, 10, 10, .05) 2.55rem);
+            background-size: 2.5rem 2.5rem;
+        }
 
-  .app{ position:relative; z-index:1; height:100vh; display:flex; flex-direction:column; padding: 1.5rem 3rem; }
+        .app {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            padding: 0.49rem 0.98rem;
+            /* чуть уменьшили отступы для лучшего использования площади */
+            overflow: hidden;
+        }
 
-  .brand{
-    position:absolute; top: 1.5rem; left: 3rem;
-    display:flex; align-items:center; gap: 0.75rem;
-    font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase;
-    font-size: 1.2rem; color:var(--logo);
-  }
-  .brand-mark{
-    width: 2.5rem; height: 2.5rem;
-    border:0.125rem solid var(--logo); display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-serif); font-weight:700; font-size: 1.4rem; letter-spacing:0;
-  }
+        /* ── TOPBAR ── */
+        .topbar {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 0;
+            margin-bottom: 0.4rem;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-mono);
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            color: var(--logo);
+            white-space: nowrap;
+        }
+        .brand-mark {
+            width: 2.2rem;
+            height: 2.2rem;
+            border: 0.125rem solid var(--logo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0;
+            flex-shrink: 0;
+        }
 
-  .clock-stamp{
-    position:absolute; top: 1.5rem; right: 3rem;
-    font-family:var(--font-mono); font-size: 1rem;
-    border:0.125rem solid var(--ink); padding: 0.6rem 1rem; background:var(--paper);
-  }
-  .clock-stamp .date{ color:var(--ink-soft); margin-right:0.75rem; letter-spacing:.12em; text-transform:uppercase; font-size: 2rem; }
-  .clock-stamp .time{ font-weight:700; font-size: 4rem; }
+        .clock-stamp {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            border: 0.125rem solid var(--ink);
+            padding: 0.4rem 0.9rem;
+            background: var(--paper);
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .clock-stamp .date {
+            color: var(--ink-soft);
+            margin-right: 0.5rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            font-size: 1.6rem;
+        }
+        .clock-stamp .time {
+            font-weight: 700;
+            font-size: 3.2rem;
+            letter-spacing: .04em;
+        }
 
-  .slides{ position:relative; flex:1; margin-top: 3rem; margin-bottom: 1.2rem; }
-  .slide{
-    position:absolute; inset:0; display:flex; flex-direction:column;
-    opacity:0; transition: opacity .55s ease; pointer-events:none;
-  }
-  .slide.active{ opacity:1; pointer-events:auto; }
+        /* ── SLIDES ── */
+        .slides {
+            position: relative;
+            flex: 1 1 auto;
+            min-height: 0;
+            margin-top: 0.6rem;
+            margin-bottom: 0.6rem;
+            overflow: hidden;
+        }
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity .55s ease;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
 
-  .slide-head{
-    display:flex; align-items:flex-end; justify-content:space-between;
-    border-bottom: 0.2rem double var(--ink);
-    padding-bottom: 0.75rem; margin-bottom: 1.5rem;
-  }
-  .slide-head .index{
-    font-family:var(--font-mono); letter-spacing:.2em; font-size: 1.6rem; color:var(--ink-soft);
-  }
-  .slide-head h1{
-    font-family:var(--font-serif); font-weight:700; font-size: clamp(3rem, 6.5vw, 10rem);
-    line-height:.95; margin:0; letter-spacing:-.01em;
-  }
-  .slide-head .stamp{
-    font-family:var(--font-mono); font-size: 1.4rem;
-    color:var(--ink-soft); border:0.1rem solid var(--ink); padding:0.4rem 0.9rem; letter-spacing:.12em; text-transform:uppercase;
-  }
+        .slide-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            border-bottom: 0.2rem double var(--ink);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            flex-shrink: 0;
+            min-height: 0;
+        }
+        .slide-head .index {
+            font-family: var(--font-mono);
+            letter-spacing: .2em;
+            font-size: 1.2rem;
+            color: var(--ink-soft);
+        }
+        .slide-head h1 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 6rem;
+            line-height: .95;
+            margin: 0;
+            letter-spacing: -.01em;
+        }
+        .slide-head .stamp {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--ink-soft);
+            border: 0.1rem solid var(--ink);
+            padding: 0.3rem 0.7rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
 
-  /* ===== сетка ===== */
-  .grid{ flex:1; display:grid; gap: 1.4rem; align-content:start; align-items:start; }
-  .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
-  .grid-4{ grid-template-columns:repeat(4,1fr); }
-  @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
+        /* ── GRID ── */
+        .grid {
+            flex: 1 1 auto;
+            min-height: 0;
+            display: grid;
+            gap: 1rem;
+        }
+        .grid-2 {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+        }
+        .grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr;
+        }
+        @media (max-width: 1400px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: 1fr 1fr;
+            }
+        }
 
-  .card{
-    background:var(--paper); border:0.125rem solid var(--ink);
-    padding: 1.4rem;
-    min-height: 0;
-    display:flex; flex-direction:column; gap: 1rem;
-    position:relative;
-    box-shadow: 0.4rem 0.4rem 0 0 var(--ink);
-    min-height: 65vh; min-width: 0; overflow:hidden;
-  }
-  .card.simple{ justify-content:flex-start; }
-  .card.full{ justify-content:space-between; }
-  .card > .value + .delta{ margin-top: 1rem; }
-  .card > .delta + .note{ margin-top: 0.2rem; }
-  .card::after{
-    content:""; position:absolute; top:0.5rem; right:0.5rem;
-    width:1.1rem; height:1.1rem; border:0.125rem solid var(--ink); border-radius:50%;
-  }
+        .card {
+            background: var(--paper);
+            border: 0.125rem solid var(--ink);
+            padding: 1rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            position: relative;
+            box-shadow: 0.3rem 0.3rem 0 0 var(--ink);
+            min-height: 0;
+            min-width: 0;
+            overflow: hidden;
+            justify-content: center;
+        }
+        .card.simple {
+            justify-content: center;
+        }
+        .card.full {
+            justify-content: space-between;
+        }
+        .card>.value+.delta {
+            margin-top: 0.6rem;
+        }
+        .card>.delta+.note {
+            margin-top: 0.1rem;
+        }
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            width: 0.9rem;
+            height: 0.9rem;
+            border: 0.125rem solid var(--ink);
+            border-radius: 50%;
+        }
 
-  .card .label{
-    font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.08em;
-    font-size: 2.2rem; color:var(--ink-soft); white-space:nowrap;
-  }
-  .card .value{
-    font-family:var(--font-serif); font-weight:700; font-size: clamp(4rem, 11vw, 14rem);
-    line-height:.85; letter-spacing:-.03em; 
-  }
-  .card .value .unit{
-    font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink-soft); margin-left:0.4rem; font-weight:500; letter-spacing:.12em;
-  }
-  .card .delta{
-    font-family:var(--font-mono); font-size: 1.6rem; font-weight:600;
-    padding:0.6rem 1.3rem; border:0.125rem solid currentColor; align-self:flex-start; letter-spacing:.1em;
-  }
-  .delta.pos{ color:var(--positive); }
-  .delta.neg{ color:var(--negative); }
-  .card .note{
-    font-family:var(--font-serif); font-style:italic; font-size: 1.6rem; color:var(--ink-soft);
-    margin-top: 1rem;
-  }
+        .card .label {
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-size: 2.4rem;
+            color: var(--ink-soft);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card .value {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: clamp(6.24rem, 17.16vw, 21.84rem);
+            line-height: .85;
+            letter-spacing: -.03em;
+            word-break: break-word;
+        }
+        .card .value .unit {
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            color: var(--ink-soft);
+            margin-left: 0.3rem;
+            font-weight: 500;
+            letter-spacing: .12em;
+        }
+        .card .delta {
+            font-family: var(--font-mono);
+            font-size: 3.96rem !important;
+            font-weight: 700;
+            padding: 0.5rem 1.2rem;
+            border: 0.125rem solid currentColor;
+            align-self: flex-start;
+            letter-spacing: .1em;
+            white-space: nowrap;
+        }
+        .delta.pos {
+            color: var(--positive);
+        }
+        .delta.neg {
+            color: var(--negative);
+        }
+        .card .note {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--ink-soft);
+            margin-top: 0.4rem;
+            line-height: 1.2;
+        }
 
-  /* транспорт */
-  .transport{
-    flex:1; display:grid; grid-template-columns:1fr 1fr; gap: 1.8rem; align-content:start; align-items:start; min-height: 0;
-  }
-  .t-card{
-    border:0.125rem solid var(--ink); background:var(--paper); padding: 1.4rem; min-height: 65vh; min-width: 0; overflow:hidden;
-    box-shadow: 0.4rem 0.4rem 0 0 var(--ink);
-    display:flex; flex-direction:column; justify-content:flex-start;
-  }
-  .t-card .lbl{
-    font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.2em; font-size: 1.6rem; color:var(--ink-soft);
-  }
-  .t-card .big{
-    font-family:var(--font-serif); font-weight:700; font-size: clamp(6rem, 14vw, 20rem); line-height:.85; margin-top:0.5rem;
-  }
-  .t-card .row{
-    display:flex; justify-content:space-between; align-items:baseline;
-    border-top:0.125rem dashed var(--ink); margin-top: 1rem; padding-top: 0.75rem;
-    font-family:var(--font-mono); font-size: 1.6rem;
-  }
-  .t-card .row .who{ font-weight:700; }
-  .t-card .row .who.arrived::before{ content:"▼ "; color:var(--positive); }
-  .t-card .row .who.departed::before{ content:"▲ "; color:var(--negative); }
-  .t-cols{ display:grid; grid-template-columns:1fr 1fr; gap: 1.2rem; }
-  .t-col{ display:flex; flex-direction:column; gap: 1rem; justify-content:flex-start; }
-  .t-col .who{ font-family:var(--font-mono); font-weight:700; font-size: clamp(2.4rem, 5vw, 6.5rem); letter-spacing:.04em; }
-  .t-col .who.departed{ color:var(--negative); }
-  .t-col .who.departed::before{ content:"▲ "; }
-  .t-col .who.arrived{ color:var(--positive); }
-  .t-col .who.arrived::before{ content:"▼ "; }
+        /* ── ТРАНСПОРТ ── */
+        .transport {
+            flex: 1 1 auto;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 1.2rem;
+        }
+        .t-card {
+            border: 0.125rem solid var(--ink);
+            background: var(--paper);
+            padding: 1rem 1.2rem;
+            min-height: 0;
+            min-width: 0;
+            overflow: hidden;
+            box-shadow: 0.3rem 0.3rem 0 0 var(--ink);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .t-card .lbl {
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            font-size: 2.7rem;
+            color: var(--ink-soft);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .t-card .big {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: clamp(6.5rem, 15.2vw, 21.7rem);
+            line-height: .85;
+            margin-top: 0.3rem;
+        }
+        .t-card .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-top: 0.125rem dashed var(--ink);
+            margin-top: 0.6rem;
+            padding-top: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+        }
+        .t-card .row .who {
+            font-weight: 700;
+        }
+        .t-card .row .who.arrived::before {
+            content: "▼ ";
+            color: var(--positive);
+        }
+        .t-card .row .who.departed::before {
+            content: "▲ ";
+            color: var(--negative);
+        }
+        .t-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            flex: 1 1 auto;
+            align-content: center;
+        }
+        .t-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            justify-content: center;
+        }
+        .t-col .lbl {
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            font-size: 1.73rem;
+            color: var(--ink-soft);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .t-col .who {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: clamp(2.52rem, 5.24vw, 6.79rem);
+            letter-spacing: .04em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.1;
+        }
+        .t-col .when {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 4.05rem;
+            color: var(--ink-soft);
+            letter-spacing: .06em;
+        }
+        .t-col .who.departed {
+            color: var(--negative);
+        }
+        .t-col .who.departed::before {
+            content: "▲";
+            margin-right: 0.15rem;
+            font-size: 0.5em;
+        }
+        .t-col .who.arrived {
+            color: var(--positive);
+        }
+        .t-col .who.arrived::before {
+            content: "▼";
+            margin-right: 0.15rem;
+            font-size: 0.5em;
+        }
 
-  /* ===== прогресс ===== */
-  .progress{
-    position:absolute; left:0; right:0; bottom:-0.75rem; height:0.2rem; background:rgba(10,10,10,.15); overflow:hidden;
-  }
-  .progress > i{ display:block; width:0; background:var(--ink); }
-  .slide.active .progress > i{ animation: fill var(--slide-seconds) linear forwards; }
-  @keyframes fill{ from{width:0} to{width:100%} }
+        /* ── ПРОГРЕСС ── */
+        .progress {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 0.15rem;
+            background: rgba(10, 10, 10, .12);
+            overflow: hidden;
+            border-radius: 1px;
+        }
+        .progress>i {
+            display: block;
+            width: 0;
+            height: 100%;
+            background: var(--ink);
+            border-radius: 1px;
+        }
+        .slide.active .progress>i {
+            animation: fill var(--slide-seconds) linear forwards;
+        }
+        @keyframes fill {
+            from {
+                width: 0
+            }
+            to {
+                width: 100%
+            }
+        }
 
-  /* подвал */
-  .footer{
-    flex:none; display:flex; justify-content:space-between; align-items:center;
-    font-family:var(--font-mono); font-size: 0.85rem; color:var(--ink-soft);
-    letter-spacing:.16em; text-transform:uppercase; border-top:0.125rem solid var(--ink); padding-top:0.6rem;
-  }
-  .footer .dots{ display:flex; gap:0.5rem; }
-  .footer .dots i{ display:block; width:0.7rem; height:0.7rem; border:0.1rem solid var(--ink); }
-  .footer .dots i.active{ background:var(--ink); }
+        /* ── ФУТЕР ── */
+        .footer {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--ink-soft);
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            border-top: 0.125rem solid var(--ink);
+            padding-top: 0.4rem;
+            min-height: 0;
+            margin-top: 0.2rem;
+        }
+        .footer .dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+        .footer .dots i {
+            display: block;
+            width: 0.6rem;
+            height: 0.6rem;
+            border: 0.1rem solid var(--ink);
+            border-radius: 50%;
+            transition: background .3s;
+        }
+        .footer .dots i.active {
+            background: var(--ink);
+        }
+
+        /* ── ПОМОЩЬ ДЛЯ TV: НЕТ СКРОЛЛА, ВСЁ ВИДНО ── */
+        .slide,
+        .app,
+        .slides {
+            max-height: 100vh;
+            max-width: 100vw;
+        }
 </style>
 </head>
 <body>
 
-<div class="app">
+    <div class="app">
 
-  <div class="brand">
-    <div class="brand-mark">С</div>
-    <div>Склад</div>
-  </div>
-  <div class="clock-stamp">
-    <span class="date" id="clock-date">—</span>
-    <span class="time" id="clock-time">—</span>
-  </div>
-
-  <div class="slides" id="slides">
-
-    <!-- 1. оборот -->
-    <section class="slide" data-slide="0">
-      <div class="slide-head">
-        <div>
-          <div class="index">СЕКЦИЯ 01 / 05</div>
-          <h1>Приёмка и отгрузка</h1>
-        </div>
-        <div class="stamp">ОБОРОТ · 7 ДНЕЙ</div>
-      </div>
-      <div class="grid grid-4">
-        <div class="card simple"><div class="label">Приёмка · сутки</div><div class="value"><span data-k="приёмка_за_сутки">—</span><span class="unit">шт</span></div></div>
-        <div class="card simple"><div class="label">Приёмка · 7 дней</div><div class="value"><span data-k="приёмка_за_7_дней">—</span><span class="unit">шт</span></div></div>
-        <div class="card simple"><div class="label">Отгрузка · сутки</div><div class="value"><span data-k="отгрузка_за_сутки">—</span><span class="unit">шт</span></div></div>
-        <div class="card simple"><div class="label">Отгрузка · 7 дней</div><div class="value"><span data-k="отгрузка_за_7_дней">—</span><span class="unit">шт</span></div></div>
-      </div>
-      <div class="progress"><i></i></div>
-    </section>
-
-    <!-- 2. задачи и ТЕ -->
-    <section class="slide" data-slide="1">
-      <div class="slide-head">
-        <div>
-          <div class="index">СЕКЦИЯ 02 / 05</div>
-          <h1>Задачи и ТЕ</h1>
-        </div>
-        <div class="stamp">ОПЕРАТИВНАЯ НАГРУЗКА</div>
-      </div>
-      <div class="grid grid-2">
-        <div class="card full">
-          <div class="label">Задач в работе</div>
-          <div class="value"><span data-k="задач_в_работе">—</span></div>
-          <div class="note">все активные задачи смены</div>
-        </div>
-        <div class="card full">
-          <div class="label">ТЕ в зоне приёмки</div>
-          <div class="value"><span data-k="те_в_зоне_приёмки">—</span></div>
-          <div class="note">транспортные единицы</div>
-        </div>
-      </div>
-      <div class="progress"><i></i></div>
-    </section>
-
-    <!-- 3. план -->
-    <section class="slide" data-slide="2">
-      <div class="slide-head">
-        <div>
-          <div class="index">СЕКЦИЯ 03 / 05</div>
-          <h1>План на смену</h1>
-        </div>
-        <div class="stamp">ОЖИДАЕТСЯ</div>
-      </div>
-      <div class="grid grid-2">
-        <div class="card simple">
-          <div class="label">Ожидается отгрузок</div>
-          <div class="value"><span data-k="ожидается_отгрузок">—</span></div>
-        </div>
-        <div class="card simple">
-          <div class="label">Ожидается приёмок</div>
-          <div class="value"><span data-k="ожидается_приёмок">—</span></div>
-        </div>
-      </div>
-      <div class="progress"><i></i></div>
-    </section>
-
-    <!-- 4. общие показатели с дельтами -->
-    <section class="slide" data-slide="3">
-      <div class="slide-head">
-        <div>
-          <div class="index">СЕКЦИЯ 04 / 05</div>
-          <h1>Состояние склада</h1>
-        </div>
-        <div class="stamp">ОБЩИЕ ПОКАЗАТЕЛИ</div>
-      </div>
-      <div class="grid grid-2">
-        <div class="card full">
-          <div class="label">Заблокированные ячейки</div>
-          <div class="value"><span data-k="заблокированные_ячейки">—</span></div>
-          <div class="delta" data-d="изменение_заблокированных">—</div>
-        </div>
-        <div class="card full">
-          <div class="label">Заполненность склада</div>
-          <div class="value"><span data-k="заполненность_склада">—</span><span class="unit">%</span></div>
-          <div class="delta" data-d="изменение_заполненности">—</div>
-        </div>
-      </div>
-      <div class="progress"><i></i></div>
-    </section>
-
-    <!-- 5. транспорт -->
-    <section class="slide" data-slide="4">
-      <div class="slide-head">
-        <div>
-          <div class="index">СЕКЦИЯ 05 / 05</div>
-          <h1>Транспорт</h1>
-        </div>
-        <div class="stamp">ТС · ЖУРНАЛ СМЕНЫ</div>
-      </div>
-      <div class="transport">
-        <div class="t-card">
-          <div class="lbl">Оформлено · сутки</div>
-          <div class="big"><span data-k="транспорт_за_сутки">—</span></div>
-          <div class="lbl" style="margin-top:14px">Оформлено · 7 дней</div>
-          <div class="big" style="font-size:clamp(4rem,8vw,11rem);margin-top:4px"><span data-k="транспорт_за_7_дней">—</span></div>
-        </div>
-        <div class="t-card">
-          <div class="t-cols">
-            <div class="t-col">
-              <div class="lbl">Последний убывший</div>
-              <div class="who departed" data-k="последний_отправившийся">—</div>
+        <div class="topbar">
+            <div class="brand">
+                <div class="brand-mark">С</div>
+                <div>Склад</div>
             </div>
-            <div class="t-col">
-              <div class="lbl">Последний прибывший</div>
-              <div class="who arrived" data-k="последний_прибывший">—</div>
+            <div class="clock-stamp">
+                <span class="date" id="clock-date">—</span>
+                <span class="time" id="clock-time">—</span>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="progress"><i></i></div>
-    </section>
 
-  </div>
+        <div class="slides" id="slides">
 
-  <div class="footer">
-    <div>автообновление 3 мин</div>
-    <div class="dots" id="dots">
-      <i data-dot="0"></i><i data-dot="1"></i><i data-dot="2"></i><i data-dot="3"></i><i data-dot="4"></i>
+            <!-- 1. оборот -->
+            <section class="slide" data-slide="0">
+                <div class="slide-head">
+                    <div>
+                        <div class="index">СЕКЦИЯ 01 / 05</div>
+                        <h1>Приёмка и отгрузка</h1>
+                    </div>
+                    <div class="stamp">ОБОРОТ · 7 ДНЕЙ</div>
+                </div>
+                <div class="grid grid-4">
+                    <div class="card simple"><div class="label">Приёмка · 24Ч</div><div class="value"><span data-k="приёмка_за_сутки">—</span><span class="unit">шт</span></div></div>
+                    <div class="card simple"><div class="label">Приёмка · 7 ДН</div><div class="value"><span data-k="приёмка_за_7_дней">—</span><span class="unit">шт</span></div></div>
+                    <div class="card simple"><div class="label">Отгрузка · 24Ч</div><div class="value"><span data-k="отгрузка_за_сутки">—</span><span class="unit">шт</span></div></div>
+                    <div class="card simple"><div class="label">Отгрузка · 7 ДН</div><div class="value"><span data-k="отгрузка_за_7_дней">—</span><span class="unit">шт</span></div></div>
+                </div>
+                <div class="progress"><i></i></div>
+            </section>
+
+            <!-- 2. задачи и ТЕ -->
+            <section class="slide" data-slide="1">
+                <div class="slide-head">
+                    <div>
+                        <div class="index">СЕКЦИЯ 02 / 05</div>
+                        <h1>Задачи и ТЕ</h1>
+                    </div>
+                    <div class="stamp">ОПЕРАТИВНАЯ НАГРУЗКА</div>
+                </div>
+                <div class="grid grid-2">
+                    <div class="card full">
+                        <div class="label">Задач в работе</div>
+                        <div class="value"><span data-k="задач_в_работе">—</span></div>
+                        <div class="note">все активные задачи смены</div>
+                    </div>
+                    <div class="card full">
+                        <div class="label">ТЕ в зоне приёмки</div>
+                        <div class="value"><span data-k="те_в_зоне_приёмки">—</span></div>
+                        <div class="note">транспортные единицы</div>
+                    </div>
+                </div>
+                <div class="progress"><i></i></div>
+            </section>
+
+            <!-- 3. план -->
+            <section class="slide" data-slide="2">
+                <div class="slide-head">
+                    <div>
+                        <div class="index">СЕКЦИЯ 03 / 05</div>
+                        <h1>План на смену</h1>
+                    </div>
+                    <div class="stamp">ОЖИДАЕТСЯ</div>
+                </div>
+                <div class="grid grid-2">
+                    <div class="card simple">
+                        <div class="label">Ожидается отгрузок</div>
+                        <div class="value"><span data-k="ожидается_отгрузок">—</span></div>
+                    </div>
+                    <div class="card simple">
+                        <div class="label">Ожидается приёмок</div>
+                        <div class="value"><span data-k="ожидается_приёмок">—</span></div>
+                    </div>
+                </div>
+                <div class="progress"><i></i></div>
+            </section>
+
+            <!-- 4. общие показатели с дельтами -->
+            <section class="slide" data-slide="3">
+                <div class="slide-head">
+                    <div>
+                        <div class="index">СЕКЦИЯ 04 / 05</div>
+                        <h1>Состояние склада</h1>
+                    </div>
+                    <div class="stamp">ОБЩИЕ ПОКАЗАТЕЛИ</div>
+                </div>
+                <div class="grid grid-2">
+                    <div class="card full">
+                        <div class="label">Заблокированные ячейки</div>
+                        <div class="value"><span data-k="заблокированные_ячейки">—</span></div>
+                        <div class="delta" data-d="изменение_заблокированных">—</div>
+                    </div>
+                    <div class="card full">
+                        <div class="label">Заполненность склада</div>
+                        <div class="value"><span data-k="заполненность_склада">—</span><span class="unit">%</span></div>
+                        <div class="delta" data-d="изменение_заполненности">—</div>
+                    </div>
+                </div>
+                <div class="progress"><i></i></div>
+            </section>
+
+            <!-- 5. транспорт -->
+            <section class="slide" data-slide="4">
+                <div class="slide-head">
+                    <div>
+                        <div class="index">СЕКЦИЯ 05 / 05</div>
+                        <h1>Транспорт</h1>
+                    </div>
+                    <div class="stamp">ТС · ЖУРНАЛ СМЕНЫ</div>
+                </div>
+                <div class="transport">
+                    <div class="t-card">
+                        <div class="lbl">Оформлено · 24Ч</div>
+                        <div class="big"><span data-k="транспорт_за_сутки">—</span></div>
+                        <div class="lbl" style="margin-top:0.6rem">Оформлено · 7 ДН</div>
+                        <div class="big" style="font-size:clamp(3.2rem,7vw,10rem);margin-top:0.2rem"><span data-k="транспорт_за_7_дней">—</span></div>
+                    </div>
+                    <div class="t-card">
+                        <div class="t-cols">
+                            <div class="t-col">
+                                <div class="lbl">Последний убывший</div>
+                                <div class="who departed" data-k="последний_отправившийся">—</div>
+                                <div class="when" data-w="последний_отправившийся"></div>
+                            </div>
+                            <div class="t-col">
+                                <div class="lbl">Последний прибывший</div>
+                                <div class="who arrived" data-k="последний_прибывший">—</div>
+                                <div class="when" data-w="последний_прибывший"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress"><i></i></div>
+            </section>
+
+        </div>
+
+        <div class="footer">
+            <div>автообновление 3 мин</div>
+            <div class="dots" id="dots">
+                <i data-dot="0"></i><i data-dot="1"></i><i data-dot="2"></i><i data-dot="3"></i><i data-dot="4"></i>
+            </div>
+            <div></div>
+        </div>
+
     </div>
-    <div></div>
-  </div>
 
-</div>
+    <script src="data.js"></script>
+    <script>
+        (function() {
+            const D = window.DASHBOARD || {};
 
-<script src="data.js"></script>
-<script>
-(function(){
-  const D = window.DASHBOARD || {};
-  document.querySelectorAll('[data-k]').forEach(el => {
-    const k = el.getAttribute('data-k');
-    if(D[k] !== undefined && D[k] !== null) el.textContent = D[k];
-  });
-  document.querySelectorAll('[data-d]').forEach(el => {
-    const k = el.getAttribute('data-d');
-    const v = D[k];
-    if(v === undefined || v === null){ el.style.display='none'; return; }
-    const n = Number(v);
-    const pos = !isNaN(n) && n >= 0;
-    el.classList.add(pos ? 'pos' : 'neg');
-    const arrow = pos ? '▲ +' : '▼ ';
-    el.textContent = arrow + v + '% за 7 дней';
-  });
+            // ── заполнение данных ──
+            document.querySelectorAll('[data-k]').forEach(el => {
+                const k = el.getAttribute('data-k');
+                if (D[k] !== undefined && D[k] !== null) {
+                    const v = String(D[k]);
+                    if (el.classList.contains('who') && /[А-ЯЁA-Z]/.test(v) && /\s\d{1,2}[:.]\d{2}/.test(v)) {
+                        el.textContent = v.split(/\s+/)[0];
+                        return;
+                    }
+                    el.textContent = D[k];
+                }
+            });
 
-  const SLIDE_SECONDS = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--slide-seconds')) || 15;
-  const slides = Array.from(document.querySelectorAll('.slide'));
-  const dots = Array.from(document.querySelectorAll('#dots [data-dot]'));
-  let cur = 0;
-  function show(i){
-    slides.forEach((s,idx) => s.classList.toggle('active', idx===i));
-    dots.forEach((d,idx) => d.classList.toggle('active', idx===i));
-  }
-  show(cur);
-  let autoTimer = setInterval(() => { cur = (cur + 1) % slides.length; show(cur); }, SLIDE_SECONDS * 1000);
-  function resetAuto(){ clearInterval(autoTimer); autoTimer = setInterval(() => { cur = (cur + 1) % slides.length; show(cur); }, SLIDE_SECONDS * 1000); }
-  function goto(i){ cur = ((i % slides.length) + slides.length) % slides.length; show(cur); resetAuto(); }
-  document.addEventListener('keydown', (e) => {
-    if (e.key === ' ' || e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goto(cur + 1); }
-    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goto(cur - 1); }
-    else if (/^[1-5]$/.test(e.key)) { goto(parseInt(e.key, 10) - 1); }
-  });
+            document.querySelectorAll('[data-w]').forEach(el => {
+                const k = el.getAttribute('data-w');
+                const v = D[k];
+                if (v) {
+                    const parts = String(v).split(/\s+/);
+                    el.textContent = parts.length > 1 ? parts.slice(1).join(' ') : '';
+                }
+            });
 
-  function tick(){
-    const now = new Date();
-    const months = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-    const d = String(now.getDate()).padStart(2,'0') + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
-    const t = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0') + ':' + String(now.getSeconds()).padStart(2,'0');
-    document.getElementById('clock-date').textContent = d;
-    document.getElementById('clock-time').textContent = t;
-  }
-  tick(); setInterval(tick, 1000);
+            document.querySelectorAll('[data-d]').forEach(el => {
+                const k = el.getAttribute('data-d');
+                const v = D[k];
+                if (v === undefined || v === null) { el.style.display = 'none'; return; }
+                const n = Number(v);
+                const pos = !isNaN(n) && n >= 0;
+                el.classList.add(pos ? 'pos' : 'neg');
+                const arrow = pos ? '▲ +' : '▼ ';
+                el.textContent = arrow + v + '% за 7 дней';
+            });
 
-  const RELOAD_MS = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--reload-ms')) || 180000;
-  setTimeout(() => location.reload(), RELOAD_MS);
-})();
-</script>
+            // ── слайды ──
+            const SLIDE_SECONDS = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--slide-seconds')) ||
+            15;
+            const slides = Array.from(document.querySelectorAll('.slide'));
+            const dots = Array.from(document.querySelectorAll('#dots [data-dot]'));
+            let cur = 0;
+
+            function show(i) {
+                slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+                dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+            }
+            show(cur);
+
+            let autoTimer = setInterval(() => {
+                cur = (cur + 1) % slides.length;
+                show(cur);
+            }, SLIDE_SECONDS * 1000);
+
+            function resetAuto() {
+                clearInterval(autoTimer);
+                autoTimer = setInterval(() => {
+                    cur = (cur + 1) % slides.length;
+                    show(cur);
+                }, SLIDE_SECONDS * 1000);
+            }
+
+            function goto(i) {
+                cur = ((i % slides.length) + slides.length) % slides.length;
+                show(cur);
+                resetAuto();
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === ' ' || e.key === 'ArrowRight' || e.key === 'PageDown') {
+                    e.preventDefault();
+                    goto(cur + 1);
+                } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                    e.preventDefault();
+                    goto(cur - 1);
+                } else if (/^[1-5]$/.test(e.key)) {
+                    goto(parseInt(e.key, 10) - 1);
+                }
+            });
+
+            // ── часы ──
+            function tick() {
+                const now = new Date();
+                const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября',
+                    'ноября', 'декабря'
+                ];
+                const d = String(now.getDate()).padStart(2, '0') + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+                const t = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0') + ':' +
+                    String(now.getSeconds()).padStart(2, '0');
+                document.getElementById('clock-date').textContent = d;
+                document.getElementById('clock-time').textContent = t;
+            }
+            tick();
+            setInterval(tick, 1000);
+
+            // ── автообновление ──
+            const RELOAD_MS = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--reload-ms')) || 180000;
+            setTimeout(() => location.reload(), RELOAD_MS);
+
+            // ── подстраховка: пересчёт при изменении размера окна ──
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    // просто обеспечиваем перерисовку — все уже на rem/ clamp
+                    document.body.style.display = 'none';
+                    requestAnimationFrame(() => {
+                        document.body.style.display = '';
+                    });
+                }, 200);
+            });
+
+        })();
+    </script>
 </body>
 </html>

@@ -42,16 +42,16 @@
   .brand{ display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase; font-size: 1.6rem; color:var(--accent); }
   .brand-mark{ width: 3rem; height: 3rem; border:1px solid var(--accent); display:flex; align-items:center; justify-content:flex-start; color:var(--accent); font-family:var(--font-crt); font-size: 2rem; line-height:1; box-shadow: 0 0 0.75rem rgba(255,255,255,.25), inset 0 0 0.5rem rgba(255,255,255,.15); }
   .clock-stamp{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--accent); display:flex; gap:0.9rem; align-items:baseline; }
-  .clock-stamp .time{ font-weight:700; font-size: 4.48rem; letter-spacing:.04em; text-shadow: 0 0 0.5rem rgba(255,255,255,.5); }
-  .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.12em; text-transform:uppercase; font-size: 2.24rem; }
+  .clock-stamp .time{ font-weight:700; font-size: 3.6rem; text-shadow: 0 0 0.5rem rgba(255,255,255,.5); }
+  .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.16em; }
   .slides{ position:relative; flex:1 1 auto; min-height:0; margin-top: 1.2rem; margin-bottom: 1.2rem; }
-  .slide{ position:absolute; inset:0; display:flex; flex-direction:column; opacity:0; transition: opacity .55s ease; pointer-events:none; overflow:hidden; }
+  .slide{ position:absolute; inset:0; display:flex; flex-direction:column; opacity:0; transition: opacity .55s ease; pointer-events:none; }
   .slide.active{ opacity:1; pointer-events:auto; }
   .slide-head{ display:flex; align-items:center; justify-content:space-between; border:1px solid var(--rule); padding: 0.9rem 1.2rem; margin-bottom: 1.4rem; background: linear-gradient(90deg, rgba(255,255,255,.06), transparent); }
   .slide-head .l{ display:flex; align-items:baseline; gap:0.9rem; }
-  .slide-head .id{ font-family:var(--font-mono); font-size: 1.44rem; color:var(--accent); letter-spacing:.22em; }
-  .slide-head h1{ font-family:var(--font-mono); font-weight:400; font-size: 4rem; margin:0; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); }
-  .slide-head .r{ display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); font-size: 1.32rem; color:var(--ink-soft); letter-spacing:.2em; text-transform:uppercase; }
+  .slide-head .id{ font-family:var(--font-mono); font-size: 1.2rem; color:var(--accent); letter-spacing:.22em; }
+  .slide-head h1{ font-family:var(--font-mono); font-weight:400; font-size: 3rem; margin:0; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); }
+  .slide-head .r{ display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); font-size: 1.1rem; color:var(--ink-soft); letter-spacing:.2em; text-transform:uppercase; }
   .blink{ animation: blink 1.2s steps(2,end) infinite; }
   @keyframes blink{ 50%{ opacity:.15; } }
   .grid{ flex:1 1 auto; min-height:0; display:grid; gap: 1.2rem; }
@@ -61,21 +61,21 @@
   .cell{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.9rem; justify-content:space-between; position:relative; overflow:hidden; min-height: 0; min-width: 0; }
   .cell::before{ content:""; position:absolute; top:0; left:0; width:1.5rem; height:1.5rem; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
   .cell::after{ content:""; position:absolute; bottom:0; right:0; width:1.5rem; height:1.5rem; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
-  .cell .ch{ font-family:var(--font-mono); font-size: 2.27rem; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; display:flex; gap:0.6rem; align-items:baseline; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .cell .ch{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; display:flex; gap:0.6rem; align-items:baseline; white-space:nowrap; }
   .cell .foot{ display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size: 1.6rem; color:var(--ink-soft); border-top:1px dashed var(--rule); padding-top: 0.7rem; }
-  .cell .value{ font-family:var(--font-mono); font-size: clamp(6.76rem, 18.59vw, 23.66rem);  line-height:.85; color:var(--accent); text-shadow: 0 0 0.9rem rgba(255,255,255,.5); letter-spacing:.02em; }
-  .delta{ font-family:var(--font-mono); font-weight:700; padding:0.5rem 1.2rem; border:1px solid currentColor; letter-spacing:.14em; font-size: 2.64rem; }
+  .cell .value{ font-family:var(--font-mono); font-size: clamp(4.5rem, 11vw, 14rem);  line-height:.85; color:var(--accent); text-shadow: 0 0 0.9rem rgba(255,255,255,.5); letter-spacing:.02em; }
+  .delta{ font-family:var(--font-mono); font-weight:700; padding:0.5rem 1.1rem; border:1px solid currentColor; letter-spacing:.14em; font-size: 1.6rem; }
   .delta.pos{ color:var(--positive); }
   .delta.neg{ color:var(--negative); }
   .bar{ height:0.4rem; background:var(--ink-faint); position:relative; overflow:hidden; }
   .bar > i{ position:absolute; top:0; left:0; bottom:0; background:var(--accent); box-shadow: 0 0 0.6rem rgba(255,255,255,.7); }
-  .transport{ flex:1 1 auto; min-height:0; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; gap: 1.2rem; }
+  .transport{ flex:1 1 auto; min-height:0; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; gap: 1.2rem; padding-bottom: 1.4rem; }
   .t-left{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 1rem; min-height: 0; justify-content:flex-start; position:relative; }
   .t-left::before, .t-left::after{ content:""; position:absolute; width:1.5rem; height:1.5rem; }
   .t-left::before{ top:0; left:0; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
   .t-left::after{ bottom:0; right:0; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
-  .t-left .ch{ font-family:var(--font-mono); font-size: 2.25rem; color:var(--accent); letter-spacing:.22em; text-transform:uppercase; font-weight:700; }
-  .t-left .big{ font-family:var(--font-mono); font-size: clamp(6.5rem, 15.2vw, 21.7rem); line-height:.85; color:var(--accent); text-shadow: 0 0 0.9rem rgba(255,255,255,.5); font-weight:700; }
+  .t-left .ch{ font-family:var(--font-mono); font-size: 1.5rem; color:var(--accent); letter-spacing:.22em; text-transform:uppercase; font-weight:700; }
+  .t-left .big{ font-family:var(--font-mono); font-size: clamp(6rem, 14vw, 18rem); line-height:.85; color:var(--accent); text-shadow: 0 0 0.9rem rgba(255,255,255,.5); font-weight:700; }
   .t-left .row{ display:flex; justify-content:space-between; align-items:baseline; border-top:2px dashed var(--rule); margin-top: auto; padding-top: 1rem; }
   .t-left .row .lbl{ font-family:var(--font-mono); font-size: 1.6rem; color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; font-weight:700; }
   .t-left .row .num{ font-family:var(--font-mono); font-size: clamp(4rem, 9vw, 12rem); color:var(--ink); font-weight:700; }
@@ -85,11 +85,11 @@
   .t-ev::before{ top:0; left:0; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
   .t-ev::after{ bottom:0; right:0; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
   .t-ev .lbl{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--accent); letter-spacing:.22em; text-transform:uppercase; font-weight:700; }
-  .t-ev .name{ font-family:var(--font-mono); font-weight:700; font-size: clamp(2.6rem, 5.4vw, 7rem); letter-spacing:.04em; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.1; }
-  .t-ev .when{ font-family:var(--font-mono); font-weight:700; font-size: 4.05rem; color:var(--ink-soft); letter-spacing:.06em; }
-  .t-ev.departed .name::before{ content:"▲ "; color:var(--negative); font-size: 6rem; margin-right:0.4rem; }
-  .t-ev.arrived .name::before{ content:"▼ "; color:var(--positive); font-size: 6rem; margin-right:0.4rem; }
-  .progress{ position:absolute; left:0; right:0; bottom:0; height:0.25rem; background:var(--ink-faint); overflow:hidden; }
+  .t-ev .name{ font-family:var(--font-mono); font-weight:700; font-size: clamp(3rem, 7vw, 9rem); letter-spacing:.04em; color:var(--ink); }
+  .t-ev .when{ font-family:var(--font-mono); font-weight:700; font-size: 1.8rem; color:var(--ink-soft); letter-spacing:.06em; }
+  .t-ev.departed .name::before{ content:"▲ "; color:var(--negative); font-size: clamp(1.8rem, 3vw, 4rem); margin-right:0.4rem; }
+  .t-ev.arrived .name::before{ content:"▼ "; color:var(--positive); font-size: clamp(1.8rem, 3vw, 4rem); margin-right:0.4rem; }
+  .progress{ position:absolute; left:0; right:0; bottom:-0.75rem; height:0.25rem; background:var(--ink-faint); overflow:hidden; }
   .progress > i{ display:block; width:0; background:var(--accent); box-shadow: 0 0 0.6rem rgba(255,255,255,.7); }
   .slide.active .progress > i{ animation: fill var(--slide-seconds) linear forwards; }
   @keyframes fill{ from{width:0} to{width:100%} }
@@ -118,10 +118,10 @@
         <div class="r"><span>СЕКЦИЯ 01 / 05</span></div>
       </div>
       <div class="grid grid-4">
-        <div class="cell"><div class="ch"><span></span><span>ПРИЁМКА · 24Ч</span></div><div class="value"><span data-k="приёмка_за_сутки">—</span></div><div class="foot"><span>шт</span><span class="blink">●</span></div></div>
-        <div class="cell"><div class="ch"><span></span><span>ПРИЁМКА · 7 ДН</span></div><div class="value"><span data-k="приёмка_за_7_дней">—</span></div><div class="foot"><span>шт</span><span class="blink">●</span></div></div>
-        <div class="cell"><div class="ch"><span></span><span>ОТГРУЗКА · 24Ч</span></div><div class="value"><span data-k="отгрузка_за_сутки">—</span></div><div class="foot"><span>шт</span><span class="blink">●</span></div></div>
-        <div class="cell"><div class="ch"><span></span><span>ОТГРУЗКА · 7 ДН</span></div><div class="value"><span data-k="отгрузка_за_7_дней">—</span></div><div class="foot"><span>шт</span><span class="blink">●</span></div></div>
+        <div class="cell"><div class="ch"><span></span><span>24Ч</span></div><div class="value"><span data-k="приёмка_за_сутки">—</span></div><div class="foot"><span>шт</span><span class="blink">●</span></div></div>
+        <div class="cell"><div class="ch"><span></span><span>7Д</span></div><div class="value"><span data-k="приёмка_за_7_дней">—</span></div><div class="foot"><span>шт</span><span class="blink">●</span></div></div>
+        <div class="cell"><div class="ch"><span></span><span>24Ч</span></div><div class="value"><span data-k="отгрузка_за_сутки">—</span></div><div class="foot"><span>шт</span><span class="blink">●</span></div></div>
+        <div class="cell"><div class="ch"><span></span><span>7Д</span></div><div class="value"><span data-k="отгрузка_за_7_дней">—</span></div><div class="foot"><span>шт</span><span class="blink">●</span></div></div>
       </div>
       <div class="progress"><i></i></div>
     </section>
@@ -142,8 +142,8 @@
         <div class="r"><span>СЕКЦИЯ 03 / 05</span></div>
       </div>
       <div class="grid grid-2">
-        <div class="cell"><div class="ch"><span>ОЖИДАЕТСЯ ОТГРУЗОК</span></div><div class="value"><span data-k="ожидается_отгрузок">—</span></div><div class="foot"><span>в очереди</span><span class="blink">●</span></div></div>
-        <div class="cell"><div class="ch"><span>ОЖИДАЕТСЯ ПРИЁМОК</span></div><div class="value"><span data-k="ожидается_приёмок">—</span></div><div class="foot"><span>в очереди</span><span class="blink">●</span></div></div>
+        <div class="cell"><div class="ch"><span>ПЛАН-ОТГР</span><span>ОЧЕРЕДЬ</span></div><div class="value"><span data-k="ожидается_отгрузок">—</span></div><div class="foot"><span>в очереди</span><span class="blink">●</span></div></div>
+        <div class="cell"><div class="ch"><span>ПЛАН-ПРИЁМ</span><span>ОЧЕРЕДЬ</span></div><div class="value"><span data-k="ожидается_приёмок">—</span></div><div class="foot"><span>в очереди</span><span class="blink">●</span></div></div>
       </div>
       <div class="progress"><i></i></div>
     </section>
@@ -154,12 +154,12 @@
       </div>
       <div class="grid grid-2">
         <div class="cell">
-          <div class="ch"><span>ЗАБЛОКИРОВАННЫЕ ЯЧЕЙКИ</span><span>7Д Δ</span></div>
+          <div class="ch"><span>БЛОК-ЯЧ</span><span>7Д Δ</span></div>
           <div class="value"><span data-k="заблокированные_ячейки">—</span></div>
           <div class="foot"><span class="delta" data-d="изменение_заблокированных">—</span><span class="blink">●</span></div>
         </div>
         <div class="cell">
-          <div class="ch"><span>ЗАПОЛНЕННОСТЬ СКЛАДА</span><span>7Д Δ</span></div>
+          <div class="ch"><span>ЗАПОЛН</span><span>7Д Δ</span></div>
           <div class="value"><span data-k="заполненность_склада">—</span><span class="unit">%</span></div>
           <div class="foot"><span class="delta" data-d="изменение_заполненности">—</span><span class="blink">●</span></div>
         </div>
@@ -175,7 +175,7 @@
         <div class="t-left">
           <div class="ch">ЖУРНАЛ ТС · 24Ч</div>
           <div class="big"><span data-k="транспорт_за_сутки">—</span></div>
-          <div class="row"><span class="lbl">ЖУРНАЛ ТС · 7 ДН</span><span class="num"><span data-k="транспорт_за_7_дней">—</span></span></div>
+          <div class="row"><span class="lbl">ЖУРНАЛ ТС · 7Д</span><span class="num"><span data-k="транспорт_за_7_дней">—</span></span></div>
         </div>
         <div class="t-right">
           <div class="t-ev departed">
