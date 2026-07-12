@@ -66,7 +66,7 @@
   .grid-4{ grid-template-columns:repeat(4,1fr); }
   @media (max-aspect-ratio: 1/1){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
   .card{ background:var(--panel); border:1px solid var(--rule); padding: clamp(20px, 2.2vw, 32px); display:flex; flex-direction:column; gap: clamp(10px, 1.2vw, 16px); position:relative; height: clamp(340px, 44vh, 560px); }
-  .card .lbl{ font-family:var(--font-mono); font-size: clamp(26px, 2vw, 36px); color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; display:flex; justify-content:space-between; font-weight:700; }
+  .card .lbl{ font-family:var(--font-mono); font-size: clamp(26px, 2vw, 36px); color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; display:flex; justify-content:space-between; font-weight:700; white-space:nowrap; }
   .card .lbl .num{ color:var(--ink-faint); }
   .card .val{ font-family:var(--font-mono); font-weight:700; font-size: clamp(140px, 16vw, 260px); line-height:.88; letter-spacing:-.01em; color:var(--ink); }
   .card .val .unit{ font-size: clamp(30px, 2.4vw, 44px); color:var(--ink-soft); margin-left:6px; font-weight:400; }
@@ -127,10 +127,10 @@
         <div class="r"></div>
       </div>
       <div class="grid grid-4">
-        <div class="card"><div class="lbl"><span>ПРИЁМКА · 24Ч</span><span class="num">[01]</span></div><div class="val"><span data-k="приёмка_за_сутки">—</span><span class="unit">шт</span></div></div>
-        <div class="card"><div class="lbl"><span>ПРИЁМКА · 7Д</span><span class="num">[02]</span></div><div class="val"><span data-k="приёмка_за_7_дней">—</span><span class="unit">шт</span></div></div>
-        <div class="card"><div class="lbl"><span>ОТГРУЗКА · 24Ч</span><span class="num">[03]</span></div><div class="val"><span data-k="отгрузка_за_сутки">—</span><span class="unit">шт</span></div></div>
-        <div class="card"><div class="lbl"><span>ОТГРУЗКА · 7Д</span><span class="num">[04]</span></div><div class="val"><span data-k="отгрузка_за_7_дней">—</span><span class="unit">шт</span></div></div>
+        <div class="card"><div class="lbl"><span>ПРИЁМКА · 24Ч</span></div><div class="val"><span data-k="приёмка_за_сутки">—</span><span class="unit">шт</span></div></div>
+        <div class="card"><div class="lbl"><span>ПРИЁМКА · 7Д</span></div><div class="val"><span data-k="приёмка_за_7_дней">—</span><span class="unit">шт</span></div></div>
+        <div class="card"><div class="lbl"><span>ОТГРУЗКА · 24Ч</span></div><div class="val"><span data-k="отгрузка_за_сутки">—</span><span class="unit">шт</span></div></div>
+        <div class="card"><div class="lbl"><span>ОТГРУЗКА · 7Д</span></div><div class="val"><span data-k="отгрузка_за_7_дней">—</span><span class="unit">шт</span></div></div>
       </div>
       <div class="progress"><i></i></div>
     </section>
@@ -140,8 +140,8 @@
         <div class="r"></div>
       </div>
       <div class="grid grid-2">
-        <div class="card"><div class="lbl"><span>ЗАДАЧ В РАБОТЕ</span><span class="num">[05]</span></div><div class="val"><span data-k="задач_в_работе">—</span></div></div>
-        <div class="card"><div class="lbl"><span>ТЕ В ПРИЁМКЕ</span><span class="num">[06]</span></div><div class="val"><span data-k="те_в_зоне_приёмки">—</span></div></div>
+        <div class="card"><div class="lbl"><span>ЗАДАЧ В РАБОТЕ</span></div><div class="val"><span data-k="задач_в_работе">—</span></div></div>
+        <div class="card"><div class="lbl"><span>ТЕ В ПРИЁМКЕ</span></div><div class="val"><span data-k="те_в_зоне_приёмки">—</span></div></div>
       </div>
       <div class="progress"><i></i></div>
     </section>
@@ -151,8 +151,8 @@
         <div class="r"></div>
       </div>
       <div class="grid grid-2">
-        <div class="card"><div class="lbl"><span>ОЖИДАЕТСЯ ОТГРУЗОК</span><span class="num">[07]</span></div><div class="val"><span data-k="ожидается_отгрузок">—</span></div></div>
-        <div class="card"><div class="lbl"><span>ОЖИДАЕТСЯ ПРИЁМОК</span><span class="num">[08]</span></div><div class="val"><span data-k="ожидается_приёмок">—</span></div></div>
+        <div class="card"><div class="lbl"><span>ОЖИДАЕТСЯ ОТГРУЗОК</span></div><div class="val"><span data-k="ожидается_отгрузок">—</span></div></div>
+        <div class="card"><div class="lbl"><span>ОЖИДАЕТСЯ ПРИЁМОК</span></div><div class="val"><span data-k="ожидается_приёмок">—</span></div></div>
       </div>
       <div class="progress"><i></i></div>
     </section>
@@ -163,14 +163,14 @@
       </div>
       <div class="grid grid-2">
         <div class="card card-sm">
-          <div class="lbl"><span>ЗАБЛОКИР. ЯЧЕЕК</span><span class="num">[09]</span></div>
+          <div class="lbl"><span>ЗАБЛОКИР. ЯЧЕЕК</span></div>
           <div class="val"><span data-k="заблокированные_ячейки">—</span></div>
           <div class="delta" data-d="изменение_заблокированных">—</div>
 
           
         </div>
         <div class="card card-sm">
-          <div class="lbl"><span>ЗАПОЛНЕННОСТЬ</span><span class="num">[10]</span></div>
+          <div class="lbl"><span>ЗАПОЛНЕННОСТЬ</span></div>
           <div class="val"><span data-k="заполненность_склада">—</span><span class="unit">%</span></div>
           <div class="delta" data-d="изменение_заполненности">—</div>
 
