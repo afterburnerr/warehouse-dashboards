@@ -40,7 +40,7 @@
   .app{ height:100vh; display:flex; flex-direction:column; padding: 1.5rem 3rem; position:relative; }
   .topbar{ flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; }
   .brand{ display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase; font-size: 2.4rem; color:var(--accent); }
-  .brand-mark{ width: 4.5rem; height: 4.5rem; border:1px solid var(--accent); display:flex; align-items:center; justify-content:flex-start; color:var(--accent); font-family:var(--font-crt); font-size: 3rem; line-height:1; box-shadow: 0 0 0.75rem rgba(255,255,255,.25), inset 0 0 0.5rem rgba(255,255,255,.15); }
+  .brand-mark{ width: 4.5rem; height: 4.5rem; border:1px solid var(--accent); display:flex; align-items:center; justify-content:center; color:var(--accent); font-family:var(--font-crt); font-size: 3rem; line-height:1; box-shadow: 0 0 0.75rem rgba(255,255,255,.25), inset 0 0 0.5rem rgba(255,255,255,.15); }
   .clock-stamp{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--accent); display:flex; gap:0.9rem; align-items:baseline; }
   .clock-stamp .time{ font-weight:700; font-size: 4.48rem; letter-spacing:.04em; text-shadow: 0 0 0.5rem rgba(255,255,255,.5); }
   .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.12em; text-transform:uppercase; font-size: 2.24rem; }
@@ -70,7 +70,7 @@
   .bar{ height:0.4rem; background:var(--ink-faint); position:relative; overflow:hidden; }
   .bar > i{ position:absolute; top:0; left:0; bottom:0; background:var(--accent); box-shadow: 0 0 0.6rem rgba(255,255,255,.7); }
   .transport{ flex:1 1 auto; min-height:0; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; gap: 1.2rem; }
-  .t-left{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 1rem; min-height: 0; justify-content:flex-start; position:relative; }
+  .t-left{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 1rem; min-height: 0; justify-content:center; position:relative; }
   .t-left::before, .t-left::after{ content:""; position:absolute; width:1.5rem; height:1.5rem; }
   .t-left::before{ top:0; left:0; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
   .t-left::after{ bottom:0; right:0; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }

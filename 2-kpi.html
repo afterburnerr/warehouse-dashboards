@@ -29,7 +29,7 @@
   .app{ height:100vh; display:flex; flex-direction:column; padding: 0.52rem 1.75rem; position:relative; }
   .topbar{ flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; }
   .brand{ display:flex; flex-direction:row !important; align-items:center; gap:0.6rem; font-family:var(--font-mono); letter-spacing:.32em; text-transform:uppercase; font-size: 1.5rem; color:var(--ink); }
-  .brand-mark{ width: 3.6rem; height: 3.6rem; background:var(--accent); color:var(--bg); display:flex; align-items:center; justify-content:flex-start; font-family:var(--font-display); font-size: 2.7rem; line-height:1; flex:0 0 auto; }
+  .brand-mark{ width: 3.6rem; height: 3.6rem; background:var(--accent); color:var(--bg); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size: 2.7rem; line-height:1; flex:0 0 auto; }
   .brand > div{ line-height:1; }
   .clock-stamp{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink); display:flex; gap:0.9rem; align-items:baseline; }
   .clock-stamp .time{ font-weight:700; font-size: 4.48rem; color:var(--accent); letter-spacing:.04em; }
@@ -58,14 +58,14 @@
   .delta.pos{ color:var(--positive); }
   .delta.neg{ color:var(--negative); }
   .transport{ flex:1 1 auto; min-height:0; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; gap: 1.2rem; }
-  .t-left{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.5rem; display:flex; flex-direction:column; justify-content:flex-start; gap: 1rem; }
+  .t-left{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.5rem; display:flex; flex-direction:column; justify-content:center; gap: 1rem; }
   .t-left .lbl{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.22em; color:var(--ink-soft); font-size: 1.8rem; }
   .t-left .big{ font-family:var(--font-display); font-size: clamp(6.5rem, 15.2vw, 21.7rem); line-height:.85; margin-top:1rem; }
   .t-left .row{ display:flex; align-items:baseline; justify-content:space-between; gap: 1rem; border-top:1px dashed var(--rule); margin-top: auto; padding-top: 1rem; }
   .t-left .row .num{ font-family:var(--font-display); font-size: clamp(4.2rem, 9.6vw, 12rem); white-space:nowrap; }
   .t-left .row .num small{ font-size:.55em; color:var(--ink-soft); margin-left:0.4rem; }
   .t-right{ display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; gap: 1.2rem; min-height:0; }
-  .t-ev{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.4rem; flex:1; display:flex; flex-direction:column; gap: 0.9rem; justify-content:flex-start; }
+  .t-ev{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.4rem; flex:1; display:flex; flex-direction:column; gap: 0.9rem; justify-content:center; }
   .t-ev .lbl{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.22em; color:var(--ink-soft); font-size: 1.8rem; }
   .t-ev .name{ font-family:var(--font-mono); font-weight:700; font-size: clamp(2.6rem, 5.4vw, 7rem); letter-spacing:.04em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.1; }
   .t-ev .when{ font-family:var(--font-mono); font-weight:700; font-size: 4.05rem; color:var(--ink-soft); letter-spacing:.06em; }

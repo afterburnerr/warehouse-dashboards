@@ -50,7 +50,7 @@
   .app{ position:relative; z-index:1; height:100vh; display:flex; flex-direction:column; padding: 1.2rem 2.4rem; overflow:hidden; }
   .topbar{ flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; }
   .brand{ display:flex; align-items:center; gap:0.6rem; font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase; font-size: 1.65rem; color:var(--ink); white-space:nowrap; }
-  .brand-mark{ width: 3.3rem; height: 3.3rem; border:1px solid var(--ink); display:flex; align-items:center; justify-content:flex-start; font-family:var(--font-mono); font-weight:700; font-size: 1.95rem; flex-shrink:0; }
+  .brand-mark{ width: 3.3rem; height: 3.3rem; border:1px solid var(--ink); display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-weight:700; font-size: 1.95rem; flex-shrink:0; }
   .clock-stamp{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink); display:flex; gap:0.9rem; align-items:baseline; white-space:nowrap; flex-shrink:0; }
   .clock-stamp .time{ font-weight:700; font-size: 4.48rem; color:var(--accent); letter-spacing:.04em; }
   .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.12em; text-transform:uppercase; font-size: 2.24rem; }
@@ -81,7 +81,7 @@
   .delta.pos{ color:var(--positive); }
   .delta.neg{ color:var(--negative); }
   .transport{ flex:1 1 auto; min-height:0; display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; gap: 1rem; }
-  .t-left{ background:var(--panel); border:1px solid var(--rule); padding: 1rem 1.2rem; display:flex; flex-direction:column; gap: 1rem; min-height: 0; justify-content:flex-start; box-sizing:border-box; position:relative; overflow:hidden; }
+  .t-left{ background:var(--panel); border:1px solid var(--rule); padding: 1rem 1.2rem; display:flex; flex-direction:column; gap: 1rem; min-height: 0; justify-content:center; box-sizing:border-box; position:relative; overflow:hidden; }
   .t-left .lbl{ font-family:var(--font-mono); font-size: 2.4rem; color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .t-left .big{ font-family:var(--font-mono); font-weight:700; font-size: clamp(6.5rem, 15.2vw, 21.7rem); line-height:.85; }
   .t-left .meta-bottom{ display:flex; justify-content:space-between; align-items:flex-end; gap: 0.75rem; font-family:var(--font-mono); font-size: 2.4rem; color:var(--ink-soft); line-height:1.4; font-weight:700; letter-spacing:.18em; text-transform:uppercase; margin-top: auto; padding-top: 1rem; }
