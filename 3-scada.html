@@ -57,7 +57,7 @@
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
   @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
-  .cell{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.9rem; justify-content:flex-start; position:relative; overflow:hidden; min-height: 55vh; min-width: 0; }
+  .cell{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.9rem; justify-content:flex-start; position:relative; overflow:hidden; min-height: 65vh; min-width: 0; }
   .cell::before{ content:""; position:absolute; top:0; left:0; width:1.5rem; height:1.5rem; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
   .cell::after{ content:""; position:absolute; bottom:0; right:0; width:1.5rem; height:1.5rem; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
   .cell .ch{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; display:flex; gap:0.6rem; align-items:baseline; white-space:nowrap; }
@@ -69,7 +69,7 @@
   .bar{ height:0.4rem; background:var(--ink-faint); position:relative; overflow:hidden; }
   .bar > i{ position:absolute; top:0; left:0; bottom:0; background:var(--accent); box-shadow: 0 0 0.6rem rgba(255,255,255,.7); }
   .transport{ flex:1; display:grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; min-height:0; align-items:start; padding-bottom: 1.8rem; }
-  .t-left{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 1rem; min-height: 55vh; justify-content:flex-start; position:relative; }
+  .t-left{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 1rem; min-height: 65vh; justify-content:flex-start; position:relative; }
   .t-left::before, .t-left::after{ content:""; position:absolute; width:1.5rem; height:1.5rem; }
   .t-left::before{ top:0; left:0; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
   .t-left::after{ bottom:0; right:0; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
