@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Склад · Дашборды</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0e1116;
+    --panel: #161b22;
+    --rule: #30363d;
+    --ink: #e6edf3;
+    --ink-soft: #8b949e;
+    --accent: #ff7a18;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans","Segoe UI",sans-serif}
+  .wrap{max-width:1100px;margin:0 auto;padding: clamp(28px,4vw,56px) clamp(20px,3vw,40px)}
+  h1{font-size: clamp(28px,3.6vw,48px); font-weight:700; letter-spacing:-.01em; margin:0 0 8px}
+  .sub{ color:var(--ink-soft); font-family:"IBM Plex Mono",monospace; font-size: clamp(13px,1.1vw,16px); letter-spacing:.18em; text-transform:uppercase; margin-bottom: clamp(28px,4vw,52px)}
+  .grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: clamp(14px,1.8vw,22px); }
+  a.card{
+    display:flex; flex-direction:column; gap:10px;
+    background:var(--panel); border:1px solid var(--rule); padding: clamp(20px,2.2vw,28px);
+    text-decoration:none; color:inherit;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  a.card:hover{ border-color: var(--accent); transform: translateY(-2px); }
+  a.card .num{ font-family:"IBM Plex Mono",monospace; font-size: clamp(13px,1vw,15px); letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase; }
+  a.card .title{ font-size: clamp(22px,2vw,30px); font-weight:700; line-height:1.15; }
+  a.card .desc{ font-family:"IBM Plex Mono",monospace; font-size: clamp(12px,.95vw,14px); color:var(--ink-soft); letter-spacing:.06em; margin-top:auto; }
+  a.card .arrow{ font-family:"IBM Plex Mono",monospace; color: var(--accent); font-weight:700; }
+  a.card .name{ font-family:"IBM Plex Mono",monospace; color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Склад · Дашборды</h1>
+  <div class="sub">5 шаблонов · 15 сек · автоперезагрузка 3 мин</div>
+  <div class="grid">
+    <a class="card" href="./1-kanban.html">
+      <div class="num">01 / Канбан</div>
+      <div class="title">Приёмка и отгрузка</div>
+      <div class="desc">светлая бумага · сериф + моно</div>
+      <div class="arrow">→ открыть <span class="name">1-kanban.html</span></div>
+    </a>
+    <a class="card" href="./2-kpi.html">
+      <div class="num">02 / KPI</div>
+      <div class="title">Плитки и метрики</div>
+      <div class="desc">тёмный индустриальный · оранжевый акцент</div>
+      <div class="arrow">→ открыть <span class="name">2-kpi.html</span></div>
+    </a>
+    <a class="card" href="./3-scada.html">
+      <div class="num">03 / SCADA</div>
+      <div class="title">Терминал событий</div>
+      <div class="desc">ч/б · CRT-свечение · моно</div>
+      <div class="arrow">→ открыть <span class="name">3-scada.html</span></div>
+    </a>
+    <a class="card" href="./4-blueprint.html">
+      <div class="num">04 / Blueprint</div>
+      <div class="title">Чертёж склада</div>
+      <div class="desc">синяя калька · жёлтый акцент</div>
+      <div class="arrow">→ открыть <span class="name">4-blueprint.html</span></div>
+    </a>
+    <a class="card" href="./5-cargo-ledger.html">
+      <div class="num">05 / Газета</div>
+      <div class="title">Складская книга</div>
+      <div class="desc">бумажная вёрстка · дисплейный сериф</div>
+      <div class="arrow">→ открыть <span class="name">5-cargo-ledger.html</span></div>
+    </a>
+  </div>
+</div>
+</body>
+</html>
