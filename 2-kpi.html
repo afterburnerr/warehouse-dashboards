@@ -45,7 +45,7 @@
   @keyframes pulse{ 0%,100%{opacity:.3} 50%{opacity:1} }
   .grid{ flex:1; display:grid; gap: 1.2rem; min-height: 0; grid-auto-rows: 1fr; }
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
-  .grid-4{ grid-template-columns:repeat(4,1fr); grid-template-rows: 1fr; }
+  .grid-4{ grid-template-columns:repeat(4,1fr); }
   @container (max-width: 90rem){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
   .tile{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.5rem; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden; min-height: 0; }
   .tile::before{ content:""; position:absolute; top:0; left:0; right:0; height:0.25rem; background:var(--accent); }

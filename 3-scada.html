@@ -55,7 +55,7 @@
   @keyframes blink{ 50%{ opacity:.15; } }
   .grid{ flex:1; display:grid; gap: 1.2rem; min-height: 0; grid-auto-rows: 1fr; }
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
-  .grid-4{ grid-template-columns:repeat(4,1fr); grid-template-rows: 1fr; }
+  .grid-4{ grid-template-columns:repeat(4,1fr); }
   @container (max-width: 90rem){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
   .cell{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.9rem; position:relative; overflow:hidden; min-height: 0; }
   .cell::before{ content:""; position:absolute; top:0; left:0; width:1.5rem; height:1.5rem; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
