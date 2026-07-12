@@ -46,7 +46,7 @@
     position:absolute; top: 1.5rem; left: 3rem;
     display:flex; align-items:center; gap: 0.75rem;
     font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase;
-    font-size: 0.9rem; color:var(--logo);
+    font-size: 1.2rem; color:var(--logo);
   }
   .brand-mark{
     width: 2.5rem; height: 2.5rem;
@@ -59,8 +59,8 @@
     font-family:var(--font-mono); font-size: 1rem;
     border:0.125rem solid var(--ink); padding: 0.6rem 1rem; background:var(--paper);
   }
-  .clock-stamp .date{ color:var(--ink-soft); margin-right:0.75rem; letter-spacing:.12em; text-transform:uppercase; font-size: 1.4rem; }
-  .clock-stamp .time{ font-weight:700; font-size: 3.4rem; }
+  .clock-stamp .date{ color:var(--ink-soft); margin-right:0.75rem; letter-spacing:.12em; text-transform:uppercase; font-size: 2rem; }
+  .clock-stamp .time{ font-weight:700; font-size: 5rem; }
 
   .slides{ position:relative; flex:1; margin-top: 3rem; margin-bottom: 1.2rem; }
   .slide{
@@ -75,14 +75,14 @@
     padding-bottom: 0.75rem; margin-bottom: 1.5rem;
   }
   .slide-head .index{
-    font-family:var(--font-mono); letter-spacing:.2em; font-size: 1.1rem; color:var(--ink-soft);
+    font-family:var(--font-mono); letter-spacing:.2em; font-size: 1.6rem; color:var(--ink-soft);
   }
   .slide-head h1{
-    font-family:var(--font-serif); font-weight:700; font-size: 4rem;
+    font-family:var(--font-serif); font-weight:700; font-size: clamp(3rem, 6.5vw, 10rem);
     line-height:.95; margin:0; letter-spacing:-.01em;
   }
   .slide-head .stamp{
-    font-family:var(--font-mono); font-size: 1rem;
+    font-family:var(--font-mono); font-size: 1.4rem;
     color:var(--ink-soft); border:0.1rem solid var(--ink); padding:0.4rem 0.9rem; letter-spacing:.12em; text-transform:uppercase;
   }
 
@@ -115,8 +115,8 @@
     font-size: 3rem; color:var(--ink-soft); white-space:nowrap;
   }
   .card .value{
-    font-family:var(--font-serif); font-weight:700; font-size: clamp(6rem, 17vw, 24rem);
-    line-height:.85; letter-spacing:-.03em;
+    font-family:var(--font-serif); font-weight:700; font-size: clamp(5rem, 14vw, 18rem);
+    line-height:.85; letter-spacing:-.03em; display:inline-flex; align-items:baseline; flex-wrap:wrap; gap:.3rem;
   }
   .card .value .unit{
     font-family:var(--font-mono); font-size: 2.4rem; color:var(--ink-soft); margin-left:0.5rem; font-weight:500; letter-spacing:.12em;

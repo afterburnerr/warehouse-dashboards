@@ -30,7 +30,7 @@
   .brand{ position:absolute; top: 1.5rem; left: 3rem; display:flex; flex-direction:row !important; align-items:center; gap:1rem; font-family:var(--font-mono); letter-spacing:.32em; text-transform:uppercase; font-size: 1.4rem; color:var(--ink); }
   .brand-mark{ width: 3.8rem; height: 3.8rem; background:var(--accent); color:var(--bg); display:flex; align-items:center; justify-content:flex-start; font-family:var(--font-display); font-size: 2.8rem; line-height:1; flex:0 0 auto; }
   .brand > div{ line-height:1; }
-  .clock-stamp{ position:absolute; top: 1.5rem; right: 3rem; font-family:var(--font-mono); font-size: 1.4rem; color:var(--ink); display:flex; gap:0.9rem; align-items:baseline; }
+  .clock-stamp{ position:absolute; top: 1.5rem; right: 3rem; font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink); display:flex; gap:0.9rem; align-items:baseline; }
   .clock-stamp .time{ font-weight:700; font-size: 3.4rem; color:var(--accent); letter-spacing:.05em; }
   .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; }
   .slides{ position:relative; flex:1; margin-top: 1.8rem; margin-bottom: 1.2rem; }
@@ -38,7 +38,7 @@
   .slide.active{ opacity:1; pointer-events:auto; }
   .slide-head{ display:flex; align-items:flex-end; justify-content:space-between; padding-bottom: 0.8rem; margin-bottom: 1.4rem; border-bottom: 0.125rem solid var(--ink); }
   .slide-head .num{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink-soft); letter-spacing:.32em; align-self:flex-end; padding-bottom: 0.5rem; }
-  .slide-head h1{ font-family:var(--font-display); font-weight:400; font-size: clamp(3rem, 6vw, 9rem); line-height:.85; margin:0; text-transform:uppercase; }
+  .slide-head h1{ font-family:var(--font-display); font-weight:400; font-size: clamp(3rem, 7vw, 11rem); line-height:.85; margin:0; text-transform:uppercase; }
   .slide-head h1 em{ color:var(--accent); font-style:normal; }
   .slide-head .live{ font-family:var(--font-mono); font-size: 1rem; letter-spacing:.32em; text-transform:uppercase; color:var(--ink-soft); display:flex; align-items:center; gap:0.5rem; }
   .live::before{ content:""; width:0.6rem; height:0.6rem; background:var(--accent); border-radius:50%; animation: pulse 1.2s ease-in-out infinite; }
@@ -50,7 +50,7 @@
   .tile{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.5rem; display:flex; flex-direction:column; position:relative; overflow:hidden; min-height: 0; }
   .tile::before{ content:""; position:absolute; top:0; left:0; right:0; height:0.25rem; background:var(--accent); }
   .tile .label{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.08em; font-size: 2.6rem; color:var(--ink-soft); white-space:nowrap; }
-  .tile .value{ font-family:var(--font-display); font-weight:400; font-size: clamp(8rem, 19vw, 28rem); line-height:.82; letter-spacing:-.01em; margin-top:0.4rem; }
+  .tile .value{ font-family:var(--font-display); font-weight:400; font-size: clamp(7rem, 16vw, 22rem); display:inline-flex; align-items:baseline; flex-wrap:wrap; gap:.3rem; line-height:.82; letter-spacing:-.01em; margin-top:0.4rem; }
   .tile .value .unit{ font-size: 3rem; color:var(--ink-soft); margin-left:0.4rem; letter-spacing:.12em; }
   .tile .foot{ display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size: 2.4rem; color:var(--ink-soft); }
   .delta{ font-family:var(--font-mono); font-weight:700; padding:0.5rem 1.1rem; border:1px solid currentColor; letter-spacing:.14em; font-size: 2.2rem; }

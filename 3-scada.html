@@ -38,9 +38,9 @@
     background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);
   }
   .app{ height:100vh; display:flex; flex-direction:column; padding: 1.5rem 3rem; position:relative; }
-  .brand{ display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase; font-size: 1.2rem; color:var(--accent); }
+  .brand{ display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase; font-size: 1.6rem; color:var(--accent); }
   .brand-mark{ width: 3rem; height: 3rem; border:1px solid var(--accent); display:flex; align-items:center; justify-content:flex-start; color:var(--accent); font-family:var(--font-crt); font-size: 2rem; line-height:1; box-shadow: 0 0 0.75rem rgba(255,255,255,.25), inset 0 0 0.5rem rgba(255,255,255,.15); }
-  .clock-stamp{ position:absolute; top: 1.5rem; right: 3rem; font-family:var(--font-mono); font-size: 1.4rem; color:var(--accent); display:flex; gap:0.9rem; align-items:baseline; }
+  .clock-stamp{ position:absolute; top: 1.5rem; right: 3rem; font-family:var(--font-mono); font-size: 1.8rem; color:var(--accent); display:flex; gap:0.9rem; align-items:baseline; }
   .clock-stamp .time{ font-weight:700; font-size: 3.6rem; text-shadow: 0 0 0.5rem rgba(255,255,255,.5); }
   .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.16em; }
   .slides{ position:relative; flex:1; margin-top: 2rem; margin-bottom: 1.2rem; }
@@ -62,7 +62,7 @@
   .cell::after{ content:""; position:absolute; bottom:0; right:0; width:1.5rem; height:1.5rem; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
   .cell .ch{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; display:flex; gap:0.6rem; align-items:baseline; white-space:nowrap; }
   .cell .foot{ display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size: 2.4rem; color:var(--ink-soft); border-top:1px dashed var(--rule); padding-top: 0.7rem; }
-  .cell .value{ font-family:var(--font-mono); font-size: clamp(8rem, 18vw, 26rem); line-height:.85; color:var(--accent); text-shadow: 0 0 0.9rem rgba(255,255,255,.5); letter-spacing:.02em; }
+  .cell .value{ font-family:var(--font-mono); font-size: clamp(6rem, 15vw, 20rem); display:inline-flex; align-items:baseline; flex-wrap:wrap; gap:.3rem; line-height:.85; color:var(--accent); text-shadow: 0 0 0.9rem rgba(255,255,255,.5); letter-spacing:.02em; }
   .delta{ font-family:var(--font-mono); font-weight:700; padding:0.5rem 1.1rem; border:1px solid currentColor; letter-spacing:.14em; font-size: 1.6rem; }
   .delta.pos{ color:var(--positive); }
   .delta.neg{ color:var(--negative); }
