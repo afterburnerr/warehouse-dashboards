@@ -11,7 +11,7 @@
   :root{
     --slide-seconds: 15;
     --reload-ms: 180000;
-    font-size: clamp(12px, 0.55vw + 0.55vh + 0.3vmin, 22px);
+    font-size: clamp(14px, 0.4vw + 0.4vh + 0.4vmin, 36px);
     --paper: #f4ede0;
     --paper-edge: #e8dfca;
     --ink: #1a2540;
@@ -97,7 +97,7 @@
   .masthead-meta #clock-date{ color: var(--ink-soft); font-weight:600; font-size: 1.5rem; letter-spacing:.04em; }
   .masthead-meta b{color:var(--ink); font-weight:700; letter-spacing:.08em}
   .slides{position:relative;flex:1 1 auto;min-height:0;display:grid;grid-template-columns: 1fr;gap:0}
-  .stage{position:relative; padding: 1.4rem 2.5rem; container-type: inline-size; }
+  .stage{position:relative; padding: 1.4rem 2.5rem; }
   .slide{
     position:absolute; inset: 1.4rem 2.5rem;
     display:flex; flex-direction:column;
@@ -123,7 +123,7 @@
   .slide-title{
     font-family: var(--font-display);
     font-weight: 900;
-    font-size: clamp(3.5rem, 5cqi, 5.5rem);
+    font-size: clamp(3.5rem, 5.515rem, 5.5rem);
     margin: 0.5rem 0 0; letter-spacing:-.02em;
     line-height:1.05;
   }
@@ -147,7 +147,7 @@
   .grid > .cell{ height:100%; min-height: 0; }
   .g-2{grid-template-columns: repeat(2,1fr); grid-template-rows: 1fr}
   .g-4{grid-template-columns: repeat(4,1fr)}
-  @container (max-width: 90rem){.g-4{grid-template-columns: repeat(2,1fr)}}
+  @media (max-width: 1400px){.g-4{grid-template-columns: repeat(2,1fr)}}
   .cell{
     background: var(--paper);
     border: 1px solid var(--ink);
@@ -168,13 +168,13 @@
   .cell-value{
     font-family: var(--font-mono);
     font-weight: 700;
-    font-size: clamp(6rem, 18cqi, 18rem);
+    font-size: clamp(6rem, 19.854rem, 18rem);
     line-height: 1;
     font-variant-numeric: tabular-nums;
     color: var(--ink);
     letter-spacing:-.03em;
   }
-  .cell-value-sm{ font-size: clamp(5rem, 10cqi, 9rem); }
+  .cell-value-sm{ font-size: clamp(5rem, 11.03rem, 9rem); }
   #v-vehicles-week{ display:inline-block; }
   .cell-unit{
     font-family: var(--font-display);
@@ -216,10 +216,10 @@
   }
   .t-left.cell::before{ content:none; }
   .t-left.cell .cell-label{ font-family: var(--font-mono); font-size: 1.8rem; color: var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; font-weight:700; }
-  .t-left.cell .big{ font-family: var(--font-mono); font-weight:700; font-size: clamp(6rem, 12cqi, 11rem); line-height:.85; }
+  .t-left.cell .big{ font-family: var(--font-mono); font-weight:700; font-size: clamp(6rem, 13.236rem, 11rem); line-height:.85; }
   .t-left.cell .meta-bottom{ display:flex; justify-content:space-between; align-items:flex-end; gap: 0.75rem; font-family: var(--font-mono); font-size: 1.8rem; color: var(--ink-soft); line-height:1.4; font-weight:700; letter-spacing:.18em; text-transform:uppercase; margin-top: auto; padding-top: 0.8rem; }
   .t-left.cell .qty{ font-family: var(--font-mono); color: var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; white-space:nowrap; display:inline-flex; align-items:flex-end; gap: 0.4rem; }
-  .t-left.cell .qty .num{ font-size: clamp(3.5rem, 7cqi, 6rem); color: var(--ink); line-height:.85; letter-spacing:0; text-transform:none; font-weight:700; }
+  .t-left.cell .qty .num{ font-size: clamp(3.5rem, 7.721rem, 6rem); color: var(--ink); line-height:.85; letter-spacing:0; text-transform:none; font-weight:700; }
   .t-left.cell .qty .unit{ font-size: 1.6rem; color: var(--ink-soft); }
   .t-right{ display:grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; min-height:0; }
   .t-ev{
@@ -229,10 +229,10 @@
     position: relative;
   }
   .t-ev .lbl{ font-family: var(--font-mono); font-size: 2.2rem; color: var(--ink); letter-spacing:.18em; text-transform:uppercase; font-weight:700; }
-  .t-ev .name{ font-family: var(--font-mono); font-weight:700; font-size: clamp(2.5rem, 5cqi, 4rem); letter-spacing:.04em; }
+  .t-ev .name{ font-family: var(--font-mono); font-weight:700; font-size: clamp(2.5rem, 5.515rem, 4rem); letter-spacing:.04em; }
   .t-ev .when{ font-family: var(--font-mono); font-weight:700; font-size: 1.8rem; color: var(--ink-soft); letter-spacing:.06em; }
-  .t-ev.departed .name::before{ content:"▼ "; color: var(--crimson); font-size: clamp(1.8rem, 3cqi, 2.8rem); margin-right:0.4rem; }
-  .t-ev.arrived .name::before{ content:"▲ "; color: var(--sage); font-size: clamp(1.8rem, 3cqi, 2.8rem); margin-right:0.4rem; }
+  .t-ev.departed .name::before{ content:"▼ "; color: var(--crimson); font-size: clamp(1.8rem, 3.309rem, 2.8rem); margin-right:0.4rem; }
+  .t-ev.arrived .name::before{ content:"▲ "; color: var(--sage); font-size: clamp(1.8rem, 3.309rem, 2.8rem); margin-right:0.4rem; }
   .footer{
     flex:none;
     display:flex; align-items:center; justify-content:center;

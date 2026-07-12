@@ -12,8 +12,8 @@
     --slide-seconds: 15;
 --reload-ms: 180000;
 
-    /* rem-база: 1080p → ~14px, 4K → ~22px */
-    font-size: clamp(12px, 0.55vw + 0.55vh + 0.3vmin, 22px);
+    /* rem-база: 1080p → ~16px, 4K → ~32px, 8K → ~48px */
+    font-size: clamp(14px, 0.4vw + 0.4vh + 0.4vmin, 36px);
 
     --bg: #f5f1ea;
     --paper: #fbf8f2;
@@ -40,7 +40,7 @@
       repeating-linear-gradient(90deg, transparent 0, transparent 2.5rem, rgba(10,10,10,.05) 2.5rem, rgba(10,10,10,.05) 2.55rem);
   }
 
-  .app{ position:relative; z-index:1; height:100vh; display:flex; flex-direction:column; padding: 1.5rem 3rem; container-type: inline-size; }
+  .app{ position:relative; z-index:1; height:100vh; display:flex; flex-direction:column; padding: 1.5rem 3rem; }
 
   .brand{
     position:absolute; top: 1.5rem; left: 3rem;
@@ -90,7 +90,7 @@
   .grid{ flex:1; display:grid; gap: 1.4rem; align-content:start; }
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
-  @container (max-width: 90rem){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
 
   .card{
     background:var(--paper); border:0.125rem solid var(--ink);
@@ -113,7 +113,7 @@
     font-size: 2.2rem; color:var(--ink-soft); white-space:nowrap;
   }
   .card .value{
-    font-family:var(--font-serif); font-weight:700; font-size: clamp(5rem, 11cqi, 14rem);
+    font-family:var(--font-serif); font-weight:700; font-size: clamp(5rem, 12.133rem, 14rem);
     line-height:.85; letter-spacing:-.03em;
   }
   .card .value .unit{
@@ -143,7 +143,7 @@
     font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.2em; font-size: 1.5rem; color:var(--ink-soft);
   }
   .t-card .big{
-    font-family:var(--font-serif); font-weight:700; font-size: clamp(6rem, 14cqi, 14rem); line-height:.85; margin-top:0.5rem;
+    font-family:var(--font-serif); font-weight:700; font-size: clamp(6rem, 15.442rem, 14rem); line-height:.85; margin-top:0.5rem;
   }
   .t-card .row{
     display:flex; justify-content:space-between; align-items:baseline;
@@ -155,7 +155,7 @@
   .t-card .row .who.departed::before{ content:"▲ "; color:var(--negative); }
   .t-cols{ display:grid; grid-template-columns:1fr 1fr; gap: 1.2rem; }
   .t-col{ display:flex; flex-direction:column; gap: 1rem; justify-content:flex-start; }
-  .t-col .who{ font-family:var(--font-mono); font-weight:700; font-size: clamp(2.5rem, 5cqi, 5rem); letter-spacing:.04em; }
+  .t-col .who{ font-family:var(--font-mono); font-weight:700; font-size: clamp(2.5rem, 5.515rem, 5rem); letter-spacing:.04em; }
   .t-col .who.departed{ color:var(--negative); }
   .t-col .who.departed::before{ content:"▲ "; }
   .t-col .who.arrived{ color:var(--positive); }

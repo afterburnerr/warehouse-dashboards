@@ -11,7 +11,7 @@
   :root{
     --slide-seconds: 15;
     --reload-ms: 180000;
-    font-size: clamp(12px, 0.55vw + 0.55vh + 0.3vmin, 22px);
+    font-size: clamp(14px, 0.4vw + 0.4vh + 0.4vmin, 36px);
     --bg: #000;
     --bg-2: #0a0a0a;
     --panel: #0e0e0e;
@@ -37,7 +37,7 @@
     content:""; position:fixed; inset:0; pointer-events:none; z-index:98;
     background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);
   }
-  .app{ height:100vh; display:flex; flex-direction:column; padding: 1.5rem 3rem; position:relative; container-type: inline-size; }
+  .app{ height:100vh; display:flex; flex-direction:column; padding: 1.5rem 3rem; position:relative; }
   .brand{ display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase; font-size: 1.2rem; color:var(--accent); }
   .brand-mark{ width: 3rem; height: 3rem; border:1px solid var(--accent); display:flex; align-items:center; justify-content:center; color:var(--accent); font-family:var(--font-crt); font-size: 2rem; line-height:1; box-shadow: 0 0 0.75rem rgba(255,255,255,.25), inset 0 0 0.5rem rgba(255,255,255,.15); }
   .clock-stamp{ position:absolute; top: 1.5rem; right: 3rem; font-family:var(--font-mono); font-size: 1.4rem; color:var(--accent); display:flex; gap:0.9rem; align-items:baseline; }
@@ -56,13 +56,13 @@
   .grid{ flex:1; display:grid; gap: 1.2rem; min-height: 0; grid-auto-rows: 1fr; }
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
-  @container (max-width: 90rem){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
   .cell{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.9rem; position:relative; overflow:hidden; min-height: 0; }
   .cell::before{ content:""; position:absolute; top:0; left:0; width:1.5rem; height:1.5rem; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
   .cell::after{ content:""; position:absolute; bottom:0; right:0; width:1.5rem; height:1.5rem; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
   .cell .ch{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; display:flex; gap:0.6rem; align-items:baseline; white-space:nowrap; }
   .cell .foot{ display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink-soft); border-top:1px dashed var(--rule); padding-top: 0.7rem; }
-  .cell .value{ font-family:var(--font-mono); font-size: clamp(7rem, 20cqi, 20rem); line-height:.85; color:var(--accent); text-shadow: 0 0 0.9rem rgba(255,255,255,.5); letter-spacing:.02em; }
+  .cell .value{ font-family:var(--font-mono); font-size: clamp(7rem, 22.06rem, 20rem); line-height:.85; color:var(--accent); text-shadow: 0 0 0.9rem rgba(255,255,255,.5); letter-spacing:.02em; }
   .delta{ font-family:var(--font-mono); font-weight:700; padding:0.5rem 1.1rem; border:1px solid currentColor; letter-spacing:.14em; font-size: 1.6rem; }
   .delta.pos{ color:var(--positive); }
   .delta.neg{ color:var(--negative); }
@@ -74,20 +74,20 @@
   .t-left::before{ top:0; left:0; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
   .t-left::after{ bottom:0; right:0; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
   .t-left .ch{ font-family:var(--font-mono); font-size: 1.5rem; color:var(--accent); letter-spacing:.22em; text-transform:uppercase; font-weight:700; }
-  .t-left .big{ font-family:var(--font-mono); font-size: clamp(5rem, 10cqi, 9rem); line-height:.85; color:var(--accent); text-shadow: 0 0 0.9rem rgba(255,255,255,.5); font-weight:700; }
+  .t-left .big{ font-family:var(--font-mono); font-size: clamp(5rem, 11.03rem, 9rem); line-height:.85; color:var(--accent); text-shadow: 0 0 0.9rem rgba(255,255,255,.5); font-weight:700; }
   .t-left .row{ display:flex; justify-content:space-between; align-items:baseline; border-top:2px dashed var(--rule); margin-top: auto; padding-top: 1rem; }
   .t-left .row .lbl{ font-family:var(--font-mono); font-size: 1.6rem; color:var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; font-weight:700; }
-  .t-left .row .num{ font-family:var(--font-mono); font-size: clamp(3.5rem, 7cqi, 6rem); color:var(--ink); font-weight:700; }
+  .t-left .row .num{ font-family:var(--font-mono); font-size: clamp(3.5rem, 7.721rem, 6rem); color:var(--ink); font-weight:700; }
   .t-right{ display:grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; min-height:0; }
   .t-ev{ background:var(--panel); border:1px solid var(--rule); padding: 1.2rem; display:flex; flex-direction:column; gap: 0.5rem; position:relative; }
   .t-ev::before, .t-ev::after{ content:""; position:absolute; width:1.1rem; height:1.1rem; }
   .t-ev::before{ top:0; left:0; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
   .t-ev::after{ bottom:0; right:0; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
   .t-ev .lbl{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--accent); letter-spacing:.22em; text-transform:uppercase; font-weight:700; }
-  .t-ev .name{ font-family:var(--font-mono); font-weight:700; font-size: clamp(2.5rem, 5cqi, 4rem); letter-spacing:.04em; color:var(--ink); }
+  .t-ev .name{ font-family:var(--font-mono); font-weight:700; font-size: clamp(2.5rem, 5.515rem, 4rem); letter-spacing:.04em; color:var(--ink); }
   .t-ev .when{ font-family:var(--font-mono); font-weight:700; font-size: 1.8rem; color:var(--ink-soft); letter-spacing:.06em; }
-  .t-ev.departed .name::before{ content:"▲ "; color:var(--negative); font-size: clamp(1.8rem, 3cqi, 2.8rem); margin-right:0.4rem; }
-  .t-ev.arrived .name::before{ content:"▼ "; color:var(--positive); font-size: clamp(1.8rem, 3cqi, 2.8rem); margin-right:0.4rem; }
+  .t-ev.departed .name::before{ content:"▲ "; color:var(--negative); font-size: clamp(1.8rem, 3.309rem, 2.8rem); margin-right:0.4rem; }
+  .t-ev.arrived .name::before{ content:"▼ "; color:var(--positive); font-size: clamp(1.8rem, 3.309rem, 2.8rem); margin-right:0.4rem; }
   .progress{ position:absolute; left:0; right:0; bottom:-0.75rem; height:0.25rem; background:var(--ink-faint); overflow:hidden; }
   .progress > i{ display:block; height:100%; width:0; background:var(--accent); box-shadow: 0 0 0.6rem rgba(255,255,255,.7); }
   .slide.active .progress > i{ animation: fill var(--slide-seconds) linear forwards; }
