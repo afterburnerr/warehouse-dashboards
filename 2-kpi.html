@@ -43,7 +43,7 @@
   .slide-head .live{ font-family:var(--font-mono); font-size: 1rem; letter-spacing:.32em; text-transform:uppercase; color:var(--ink-soft); display:flex; align-items:center; gap:0.5rem; }
   .live::before{ content:""; width:0.6rem; height:0.6rem; background:var(--accent); border-radius:50%; animation: pulse 1.2s ease-in-out infinite; }
   @keyframes pulse{ 0%,100%{opacity:.3} 50%{opacity:1} }
-  .grid{ flex:1; display:grid; gap: 1.2rem; min-height: 0; grid-auto-rows: 1fr; }
+  .grid{ flex:1; display:grid; gap: 1.2rem; min-height: 0; }
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
   @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
