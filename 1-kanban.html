@@ -12,6 +12,9 @@
     --slide-seconds: 15;
     --reload-ms: 180000;
 
+    /* rem-база от viewport: 1920×1080 → 16px. Масштабируется линейно. */
+    font-size: clamp(12px, 0.55vw + 0.55vh + 0.3vmin, 22px);
+
     --bg: #f5f1ea;
     --paper: #fbf8f2;
     --ink: #0a0a0a;
@@ -29,38 +32,37 @@
   *{ box-sizing:border-box; }
   html,body{ margin:0; padding:0; height:100%; background:var(--bg); color:var(--ink); font-family:var(--font-serif); overflow:hidden; }
 
-  /* тонкая фоновая сетка, как разлиновка технологической карты */
+  /* тонкая фоновая сетка */
   body::before{
     content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
     background-image:
-      repeating-linear-gradient(0deg, transparent 0, transparent 47px, rgba(10,10,10,.05) 47px, rgba(10,10,10,.05) 48px),
-      repeating-linear-gradient(90deg, transparent 0, transparent 47px, rgba(10,10,10,.05) 47px, rgba(10,10,10,.05) 48px);
+      repeating-linear-gradient(0deg, transparent 0, transparent 2.5rem, rgba(10,10,10,.05) 2.5rem, rgba(10,10,10,.05) 2.55rem),
+      repeating-linear-gradient(90deg, transparent 0, transparent 2.5rem, rgba(10,10,10,.05) 2.5rem, rgba(10,10,10,.05) 2.55rem);
   }
 
-  .app{ position:relative; z-index:1; height:100vh; display:flex; flex-direction:column; padding: clamp(18px, 2.4vw, 38px) clamp(28px, 4vw, 72px); }
+  .app{ position:relative; z-index:1; height:100vh; display:flex; flex-direction:column; padding: 1.5rem 3rem; container-type: inline-size; }
 
-  /* ===== лого в верхнем-левом ===== */
   .brand{
-    position:absolute; top: clamp(18px, 2.4vw, 38px); left: clamp(28px, 4vw, 72px);
-    display:flex; align-items:center; gap:14px;
+    position:absolute; top: 1.5rem; left: 3rem;
+    display:flex; align-items:center; gap: 0.75rem;
     font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase;
-    font-size: clamp(13px, 1.1vw, 18px); color:var(--logo);
+    font-size: 0.9rem; color:var(--logo);
   }
   .brand-mark{
-    width: clamp(34px, 2.8vw, 48px); height: clamp(34px, 2.8vw, 48px);
-    border:2px solid var(--logo); display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-serif); font-weight:700; font-size: clamp(18px, 1.6vw, 26px); letter-spacing:0;
+    width: 2.5rem; height: 2.5rem;
+    border:0.125rem solid var(--logo); display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-serif); font-weight:700; font-size: 1.4rem; letter-spacing:0;
   }
 
   .clock-stamp{
-    position:absolute; top: clamp(18px, 2.4vw, 38px); right: clamp(28px, 4vw, 72px);
-    font-family:var(--font-mono); font-size: clamp(15px, 1.25vw, 22px);
-    border:2px solid var(--ink); padding: 10px 16px; background:var(--paper);
+    position:absolute; top: 1.5rem; right: 3rem;
+    font-family:var(--font-mono); font-size: 1rem;
+    border:0.125rem solid var(--ink); padding: 0.6rem 1rem; background:var(--paper);
   }
-  .clock-stamp .date{ color:var(--ink-soft); margin-right:12px; letter-spacing:.12em; text-transform:uppercase; font-size: clamp(20px, 1.6vw, 28px); }
-  .clock-stamp .time{ font-weight:700; font-size: clamp(48px, 4vw, 72px); }
+  .clock-stamp .date{ color:var(--ink-soft); margin-right:0.75rem; letter-spacing:.12em; text-transform:uppercase; font-size: 1.4rem; }
+  .clock-stamp .time{ font-weight:700; font-size: 3.4rem; }
 
-  .slides{ position:relative; flex:1; margin-top: clamp(40px, 4vw, 64px); margin-bottom: clamp(14px, 2vw, 26px); }
+  .slides{ position:relative; flex:1; margin-top: 3rem; margin-bottom: 1.2rem; }
   .slide{
     position:absolute; inset:0; display:flex; flex-direction:column;
     opacity:0; transition: opacity .55s ease; pointer-events:none;
@@ -69,89 +71,90 @@
 
   .slide-head{
     display:flex; align-items:flex-end; justify-content:space-between;
-    border-bottom: 3px double var(--ink);
-    padding-bottom: clamp(10px, 1.2vw, 18px); margin-bottom: clamp(16px, 2vw, 30px);
+    border-bottom: 0.2rem double var(--ink);
+    padding-bottom: 0.75rem; margin-bottom: 1.5rem;
   }
   .slide-head .index{
-    font-family:var(--font-mono); letter-spacing:.2em; font-size: clamp(16px, 1.3vw, 22px); color:var(--ink-soft);
+    font-family:var(--font-mono); letter-spacing:.2em; font-size: 1.1rem; color:var(--ink-soft);
   }
   .slide-head h1{
-    font-family:var(--font-serif); font-weight:700; font-size: clamp(46px, 5vw, 78px);
+    font-family:var(--font-serif); font-weight:700; font-size: 4rem;
     line-height:.95; margin:0; letter-spacing:-.01em;
   }
   .slide-head .stamp{
-    font-family:var(--font-mono); font-size: clamp(15px, 1.2vw, 20px);
-    color:var(--ink-soft); border:1.5px solid var(--ink); padding:6px 14px; letter-spacing:.12em; text-transform:uppercase;
+    font-family:var(--font-mono); font-size: 1rem;
+    color:var(--ink-soft); border:0.1rem solid var(--ink); padding:0.4rem 0.9rem; letter-spacing:.12em; text-transform:uppercase;
   }
 
-  /* ===== сетка канбан-карточек ===== */
-  .grid{ flex:1; display:grid; gap: clamp(14px, 1.8vw, 26px); align-content:start; }
+  /* ===== сетка ===== */
+  .grid{ flex:1; display:grid; gap: 1.4rem; align-content:start; }
   .grid-2{ grid-template-columns:1fr 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
-  @media (max-aspect-ratio: 1/1){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
+  @container (max-width: 90rem){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
 
   .card{
-    background:var(--paper); border:2px solid var(--ink);
-    padding: clamp(16px, 1.8vw, 28px);
-    height: clamp(420px, 52vh, 640px);
-    display:flex; flex-direction:column; justify-content:flex-start; gap: clamp(14px, 1.8vw, 24px);
+    background:var(--paper); border:0.125rem solid var(--ink);
+    padding: 1.4rem;
+    min-height: 0; height: 100%;
+    display:flex; flex-direction:column; justify-content:flex-start; gap: 1rem;
     position:relative;
-    box-shadow: 6px 6px 0 0 var(--ink);
+    box-shadow: 0.4rem 0.4rem 0 0 var(--ink);
   }
-  .card > .value + .delta{ margin-top: clamp(14px, 1.8vw, 24px); }
-  .card > .delta + .note{ margin-top: clamp(2px, .3vw, 6px); }
+  .card > .value + .delta{ margin-top: 1rem; }
+  .card > .delta + .note{ margin-top: 0.2rem; }
   .card::after{
-    content:""; position:absolute; top:8px; right:8px;
-    width:18px; height:18px; border:2px solid var(--ink); border-radius:50%;
+    content:""; position:absolute; top:0.5rem; right:0.5rem;
+    width:1.1rem; height:1.1rem; border:0.125rem solid var(--ink); border-radius:50%;
   }
 
   .card .label{
     font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.16em;
-    font-size: clamp(34px, 2.6vw, 47px); color:var(--ink-soft);
+    font-size: 2.2rem; color:var(--ink-soft);
   }
   .card .value{
-    font-family:var(--font-serif); font-weight:700; font-size: clamp(120px, 14vw, 240px);
+    font-family:var(--font-serif); font-weight:700; font-size: clamp(5rem, 11cqi, 12rem);
     line-height:.85; letter-spacing:-.03em;
   }
   .card .value .unit{
-    font-family:var(--font-mono); font-size: clamp(26px, 2vw, 36px); color:var(--ink-soft); margin-left:8px; font-weight:500; letter-spacing:.12em;
+    font-family:var(--font-mono); font-size: 1.6rem; color:var(--ink-soft); margin-left:0.5rem; font-weight:500; letter-spacing:.12em;
   }
   .card .delta{
-    font-family:var(--font-mono); font-size: clamp(26px, 2vw, 36px); font-weight:600;
-    padding:10px 22px; border:2px solid currentColor; align-self:flex-start; letter-spacing:.1em;
+    font-family:var(--font-mono); font-size: 1.6rem; font-weight:600;
+    padding:0.6rem 1.3rem; border:0.125rem solid currentColor; align-self:flex-start; letter-spacing:.1em;
   }
   .delta.pos{ color:var(--positive); }
   .delta.neg{ color:var(--negative); }
   .card .note{
-    font-family:var(--font-serif); font-style:italic; font-size: clamp(26px, 2vw, 36px); color:var(--ink-soft);
-    margin-top: clamp(14px, 1.6vw, 22px);
+    font-family:var(--font-serif); font-style:italic; font-size: 1.6rem; color:var(--ink-soft);
+    margin-top: 1rem;
   }
 
-  /* транспорт — таблица */
+  /* транспорт */
   .transport{
-    flex:1; display:grid; grid-template-columns:1fr 1fr; gap: clamp(18px, 2.4vw, 36px); align-content:start;
+    flex:1; display:grid; grid-template-columns:1fr 1fr; gap: 1.8rem; align-content:start; min-height: 0;
   }
   .t-card{
-    border:2px solid var(--ink); background:var(--paper); padding: clamp(16px, 1.8vw, 28px);
-    box-shadow: 6px 6px 0 0 var(--ink);
+    border:0.125rem solid var(--ink); background:var(--paper); padding: 1.4rem;
+    box-shadow: 0.4rem 0.4rem 0 0 var(--ink);
+    display:flex; flex-direction:column; justify-content:flex-start;
   }
   .t-card .lbl{
-    font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.2em; font-size: clamp(24px, 1.8vw, 32px); color:var(--ink-soft);
+    font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.2em; font-size: 1.5rem; color:var(--ink-soft);
   }
   .t-card .big{
-    font-family:var(--font-serif); font-weight:700; font-size: clamp(150px, 18vw, 280px); line-height:.85; margin-top:8px;
+    font-family:var(--font-serif); font-weight:700; font-size: clamp(6rem, 14cqi, 14rem); line-height:.85; margin-top:0.5rem;
   }
   .t-card .row{
     display:flex; justify-content:space-between; align-items:baseline;
-    border-top:2px dashed var(--ink); margin-top: clamp(14px, 1.8vw, 22px); padding-top: clamp(12px, 1.4vw, 20px);
-    font-family:var(--font-mono); font-size: clamp(26px, 2vw, 36px);
+    border-top:0.125rem dashed var(--ink); margin-top: 1rem; padding-top: 0.75rem;
+    font-family:var(--font-mono); font-size: 1.6rem;
   }
   .t-card .row .who{ font-weight:700; }
   .t-card .row .who.arrived::before{ content:"▼ "; color:var(--positive); }
   .t-card .row .who.departed::before{ content:"▲ "; color:var(--negative); }
-  .t-cols{ display:grid; grid-template-columns:1fr 1fr; gap: clamp(16px, 2vw, 28px); }
-  .t-col{ display:flex; flex-direction:column; gap: clamp(14px, 2vw, 24px); justify-content:flex-start; }
-  .t-col .who{ font-family:var(--font-mono); font-weight:700; font-size: clamp(50px, 4.5vw, 78px); letter-spacing:.04em; }
+  .t-cols{ display:grid; grid-template-columns:1fr 1fr; gap: 1.2rem; }
+  .t-col{ display:flex; flex-direction:column; gap: 1rem; justify-content:flex-start; }
+  .t-col .who{ font-family:var(--font-mono); font-weight:700; font-size: clamp(2.5rem, 5cqi, 5rem); letter-spacing:.04em; }
   .t-col .who.departed{ color:var(--negative); }
   .t-col .who.departed::before{ content:"▲ "; }
   .t-col .who.arrived{ color:var(--positive); }
@@ -159,7 +162,7 @@
 
   /* ===== прогресс ===== */
   .progress{
-    position:absolute; left:0; right:0; bottom:-12px; height:3px; background:rgba(10,10,10,.15); overflow:hidden;
+    position:absolute; left:0; right:0; bottom:-0.75rem; height:0.2rem; background:rgba(10,10,10,.15); overflow:hidden;
   }
   .progress > i{ display:block; height:100%; width:0; background:var(--ink); }
   .slide.active .progress > i{ animation: fill var(--slide-seconds) linear forwards; }
@@ -168,11 +171,11 @@
   /* подвал */
   .footer{
     flex:none; display:flex; justify-content:space-between; align-items:center;
-    font-family:var(--font-mono); font-size: clamp(11px, .9vw, 14px); color:var(--ink-soft);
-    letter-spacing:.16em; text-transform:uppercase; border-top:2px solid var(--ink); padding-top:10px;
+    font-family:var(--font-mono); font-size: 0.85rem; color:var(--ink-soft);
+    letter-spacing:.16em; text-transform:uppercase; border-top:0.125rem solid var(--ink); padding-top:0.6rem;
   }
-  .footer .dots{ display:flex; gap:8px; }
-  .footer .dots i{ display:block; width:10px; height:10px; border:1.5px solid var(--ink); }
+  .footer .dots{ display:flex; gap:0.5rem; }
+  .footer .dots i{ display:block; width:0.7rem; height:0.7rem; border:0.1rem solid var(--ink); }
   .footer .dots i.active{ background:var(--ink); }
 </style>
 </head>
