@@ -88,8 +88,8 @@
 
   /* ===== сетка ===== */
   .grid{ flex:1; display:grid; gap: 1.4rem; align-content:start; }
-  .grid-2{ grid-template-columns:1fr 1fr; }
-  .grid-4{ grid-template-columns:repeat(4,1fr); }
+  .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
+  .grid-4{ grid-template-columns:repeat(4,1fr); grid-template-rows: 1fr; }
   @container (max-width: 90rem){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
 
   .card{
