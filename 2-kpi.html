@@ -43,7 +43,7 @@
   .slide-head .live{ font-family:var(--font-mono); font-size: 1rem; letter-spacing:.32em; text-transform:uppercase; color:var(--ink-soft); display:flex; align-items:center; gap:0.5rem; }
   .live::before{ content:""; width:0.6rem; height:0.6rem; background:var(--accent); border-radius:50%; animation: pulse 1.2s ease-in-out infinite; }
   @keyframes pulse{ 0%,100%{opacity:.3} 50%{opacity:1} }
-  .grid{ flex:1; display:grid; gap: 1.2rem; min-height: 0; }
+  .grid{ flex:1; display:grid; gap: 1.2rem; min-height: 0; align-items:start; }
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
   @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
@@ -56,7 +56,7 @@
   .delta{ font-family:var(--font-mono); font-weight:700; padding:0.5rem 1.1rem; border:1px solid currentColor; letter-spacing:.14em; font-size: 1.6rem; }
   .delta.pos{ color:var(--positive); }
   .delta.neg{ color:var(--negative); }
-  .transport{ flex:1; display:grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; align-content:stretch; min-height: 0; }
+  .transport{ flex:1; display:grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; align-content:start; align-items:start; min-height: 0; }
   .t-left{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.5rem; display:flex; flex-direction:column; justify-content:flex-start; gap: 1rem; }
   .t-left .lbl{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.22em; color:var(--ink-soft); font-size: 1.8rem; }
   .t-left .big{ font-family:var(--font-display); font-size: clamp(5rem, 11vw, 14rem); line-height:.85; margin-top:1rem; }

@@ -87,7 +87,7 @@
   }
 
   /* ===== сетка ===== */
-  .grid{ flex:1; display:grid; gap: 1.4rem; align-content:start; }
+  .grid{ flex:1; display:grid; gap: 1.4rem; align-content:start; align-items:start; }
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
   @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
@@ -133,7 +133,7 @@
 
   /* транспорт */
   .transport{
-    flex:1; display:grid; grid-template-columns:1fr 1fr; gap: 1.8rem; align-content:start; min-height: 0;
+    flex:1; display:grid; grid-template-columns:1fr 1fr; gap: 1.8rem; align-content:start; align-items:start; min-height: 0;
   }
   .t-card{
     border:0.125rem solid var(--ink); background:var(--paper); padding: 1.4rem;

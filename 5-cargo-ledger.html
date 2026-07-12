@@ -143,7 +143,7 @@
   .progress-fill{ width:0%; background: var(--ochre)}
   .slide.active .progress-fill{animation: fillbar var(--slide-seconds) linear forwards}
   @keyframes fillbar{from{width:0} to{width:100%}}
-  .grid{flex:1 1 auto; display:grid; gap: 1.4rem; align-content:stretch; align-items:stretch; min-height: 0;}
+  .grid{flex:1 1 auto; display:grid; gap: 1.4rem; align-content:start; align-items:start; min-height: 0;}
   .grid > .cell{ min-height: 0; display:flex; flex-direction:column; justify-content:flex-start; }
   .g-2{grid-template-columns: repeat(2,1fr); grid-template-rows: 1fr}
   .g-4{grid-template-columns: repeat(4,1fr)}
@@ -221,7 +221,7 @@
   .t-left.cell .qty{ font-family: var(--font-mono); color: var(--ink-soft); letter-spacing:.18em; text-transform:uppercase; white-space:nowrap; display:inline-flex; align-items:flex-end; gap: 0.4rem; }
   .t-left.cell .qty .num{ font-size: clamp(3.5rem, 7.721rem, 6rem); color: var(--ink); line-height:.85; letter-spacing:0; text-transform:none; font-weight:700; }
   .t-left.cell .qty .unit{ font-size: 1.6rem; color: var(--ink-soft); }
-  .t-right{ display:grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; min-height:0; }
+  .t-right{ display:grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; min-height:0; align-items:start; }
   .t-ev{
     background: var(--paper); border: 1px solid var(--ink);
     padding: 1.2rem;
