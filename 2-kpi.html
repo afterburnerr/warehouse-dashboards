@@ -43,11 +43,11 @@
   .slide-head .live{ font-family:var(--font-mono); font-size: 1rem; letter-spacing:.32em; text-transform:uppercase; color:var(--ink-soft); display:flex; align-items:center; gap:0.5rem; }
   .live::before{ content:""; width:0.6rem; height:0.6rem; background:var(--accent); border-radius:50%; animation: pulse 1.2s ease-in-out infinite; }
   @keyframes pulse{ 0%,100%{opacity:.3} 50%{opacity:1} }
-  .grid{ flex:1; display:grid; gap: 1.2rem; min-height: 0; }
+  .grid{ flex:1; display:grid; gap: 1.2rem; min-height: 0; grid-auto-rows: 1fr; }
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
   @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
-  .tile{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.5rem; display:flex; flex-direction:column; justify-content:center; height: clamp(18rem, 55vh, 32rem); position:relative; overflow:hidden; min-height: 0; }
+  .tile{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.5rem; display:flex; flex-direction:column; justify-content:center; height: 100%; position:relative; overflow:hidden; min-height: 0; }
   .tile::before{ content:""; position:absolute; top:0; left:0; right:0; height:0.25rem; background:var(--accent); }
   .tile .label{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.08em; font-size: 1.8rem; color:var(--ink-soft); white-space:nowrap; }
   .tile .value{ font-family:var(--font-display); font-weight:400; font-size: clamp(7rem, 17vw, 24rem); line-height:.82; letter-spacing:-.01em; margin-top:0.4rem; }
