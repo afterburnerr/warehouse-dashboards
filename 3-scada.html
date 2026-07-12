@@ -39,7 +39,7 @@
   }
   .app{ height:100vh; display:flex; flex-direction:column; padding: 1.5rem 3rem; position:relative; }
   .brand{ display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase; font-size: 1.2rem; color:var(--accent); }
-  .brand-mark{ width: 3rem; height: 3rem; border:1px solid var(--accent); display:flex; align-items:center; justify-content:center; color:var(--accent); font-family:var(--font-crt); font-size: 2rem; line-height:1; box-shadow: 0 0 0.75rem rgba(255,255,255,.25), inset 0 0 0.5rem rgba(255,255,255,.15); }
+  .brand-mark{ width: 3rem; height: 3rem; border:1px solid var(--accent); display:flex; align-items:center; justify-content:flex-start; color:var(--accent); font-family:var(--font-crt); font-size: 2rem; line-height:1; box-shadow: 0 0 0.75rem rgba(255,255,255,.25), inset 0 0 0.5rem rgba(255,255,255,.15); }
   .clock-stamp{ position:absolute; top: 1.5rem; right: 3rem; font-family:var(--font-mono); font-size: 1.4rem; color:var(--accent); display:flex; gap:0.9rem; align-items:baseline; }
   .clock-stamp .time{ font-weight:700; font-size: 3.6rem; text-shadow: 0 0 0.5rem rgba(255,255,255,.5); }
   .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.16em; }
@@ -57,7 +57,7 @@
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
   @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
-  .cell{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.9rem; height: 100%; justify-content:center; position:relative; overflow:hidden; min-height: 0; }
+  .cell{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.9rem; height: 100%; justify-content:flex-start; position:relative; overflow:hidden; min-height: 0; }
   .cell::before{ content:""; position:absolute; top:0; left:0; width:1.5rem; height:1.5rem; border-top:1px solid var(--accent); border-left:1px solid var(--accent); }
   .cell::after{ content:""; position:absolute; bottom:0; right:0; width:1.5rem; height:1.5rem; border-bottom:1px solid var(--accent); border-right:1px solid var(--accent); }
   .cell .ch{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; display:flex; gap:0.6rem; align-items:baseline; white-space:nowrap; }

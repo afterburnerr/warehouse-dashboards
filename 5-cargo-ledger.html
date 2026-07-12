@@ -50,7 +50,7 @@
     width: 4.5rem; height: 4.5rem;
     border: 0.125rem solid var(--ink);
     border-radius: 50%;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:center;justify-content:flex-start;
     font-family: var(--font-mono);
     font-size: 0.75rem; letter-spacing:.1em;
     text-transform:uppercase;
@@ -144,7 +144,7 @@
   .slide.active .progress-fill{animation: fillbar var(--slide-seconds) linear forwards}
   @keyframes fillbar{from{width:0} to{width:100%}}
   .grid{flex:1 1 auto; display:grid; gap: 1.4rem; align-content:stretch; align-items:stretch; min-height: 0; grid-auto-rows: 1fr;}
-  .grid > .cell{ min-height: 0; height: 100%; display:flex; flex-direction:column; justify-content:center; }
+  .grid > .cell{ min-height: 0; height: 100%; display:flex; flex-direction:column; justify-content:flex-start; }
   .g-2{grid-template-columns: repeat(2,1fr); grid-template-rows: 1fr}
   .g-4{grid-template-columns: repeat(4,1fr)}
   @media (max-width: 1400px){.g-4{grid-template-columns: repeat(2,1fr)}}
@@ -235,7 +235,7 @@
   .t-ev.arrived .name::before{ content:"▲ "; color: var(--sage); font-size: clamp(1.8rem, 3.309rem, 2.8rem); margin-right:0.4rem; }
   .footer{
     flex:none;
-    display:flex; align-items:center; justify-content:center;
+    display:flex; align-items:center; justify-content:flex-start;
     padding: 0.7rem 3.5rem;
     border-top: 0.2rem double var(--ink);
     background: var(--paper);

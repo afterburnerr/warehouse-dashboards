@@ -49,7 +49,7 @@
   }
   .app{ position:relative; z-index:1; height:100vh; display:flex; flex-direction:column; padding: 1.6rem 3.5rem; }
   .brand{ display:flex; align-items:center; gap:0.9rem; font-family:var(--font-mono); letter-spacing:.22em; text-transform:uppercase; font-size: 0.85rem; color:var(--ink); }
-  .brand-mark{ width: 2.5rem; height: 2.5rem; border:1px solid var(--ink); display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-weight:700; font-size: 1.2rem; }
+  .brand-mark{ width: 2.5rem; height: 2.5rem; border:1px solid var(--ink); display:flex; align-items:center; justify-content:flex-start; font-family:var(--font-mono); font-weight:700; font-size: 1.2rem; }
   .clock-stamp{ position:absolute; top: 1.6rem; right: 3.5rem; font-family:var(--font-mono); font-size: 1.4rem; color:var(--ink); display:flex; gap:0.9rem; align-items:baseline; }
   .clock-stamp .time{ font-weight:700; font-size: 3.4rem; color:var(--accent); }
   .clock-stamp .date{ color:var(--ink-soft); letter-spacing:.16em; }
@@ -65,7 +65,7 @@
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
   @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
-  .card{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.7rem; height: 100%; justify-content:center; position:relative; height: 100%; min-height: 0; }
+  .card{ background:var(--panel); border:1px solid var(--rule); padding: 1.4rem; display:flex; flex-direction:column; gap: 0.7rem; height: 100%; justify-content:flex-start; position:relative; height: 100%; min-height: 0; }
   .card .lbl{ font-family:var(--font-mono); font-size: 1.8rem; color:var(--ink-soft); letter-spacing:.08em; text-transform:uppercase; display:flex; justify-content:space-between; font-weight:700; white-space:nowrap; }
   .card .lbl .num{ color:var(--ink-faint); }
   .card .val{ font-family:var(--font-mono); font-weight:700; font-size: clamp(6rem, 14vw, 22rem); line-height:.88; letter-spacing:-.01em; color:var(--ink); }
