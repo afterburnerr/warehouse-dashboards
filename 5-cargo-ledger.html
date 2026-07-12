@@ -27,7 +27,7 @@
     --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;height:100%;background:var(--paper);color:var(--ink);font-family:var(--font-body);overflow:hidden}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);overflow:hidden}
   body{
     background-image:
       linear-gradient(transparent 95%, rgba(184,132,42,.05) 95%),
@@ -140,11 +140,11 @@
     margin-bottom: 1.2rem;
     overflow:hidden;
   }
-  .progress-fill{height:100%; width:0%; background: var(--ochre)}
+  .progress-fill{ width:0%; background: var(--ochre)}
   .slide.active .progress-fill{animation: fillbar var(--slide-seconds) linear forwards}
   @keyframes fillbar{from{width:0} to{width:100%}}
   .grid{flex:1 1 auto; display:grid; gap: 1.4rem; align-content:stretch; align-items:stretch; min-height: 0; grid-auto-rows: 1fr;}
-  .grid > .cell{ min-height: 0; height: 100%; display:flex; flex-direction:column; justify-content:flex-start; }
+  .grid > .cell{ min-height: 0; display:flex; flex-direction:column; justify-content:flex-start; }
   .g-2{grid-template-columns: repeat(2,1fr); grid-template-rows: 1fr}
   .g-4{grid-template-columns: repeat(4,1fr)}
   @media (max-width: 1400px){.g-4{grid-template-columns: repeat(2,1fr)}}

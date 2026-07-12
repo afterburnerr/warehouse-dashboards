@@ -25,7 +25,7 @@
     --font-mono: "JetBrains Mono", "Courier New", monospace;
   }
   *{ box-sizing:border-box; }
-  html,body{ margin:0; padding:0; height:100%; background:var(--bg); color:var(--ink); font-family:var(--font-display); overflow:hidden; letter-spacing:.02em; }
+  html,body{ margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:var(--font-display); overflow:hidden; letter-spacing:.02em; }
   .app{ height:100vh; display:flex; flex-direction:column; padding: 1.5rem 3rem; position:relative; }
   .brand{ position:absolute; top: 1.5rem; left: 3rem; display:flex; flex-direction:row !important; align-items:center; gap:1rem; font-family:var(--font-mono); letter-spacing:.32em; text-transform:uppercase; font-size: 1.4rem; color:var(--ink); }
   .brand-mark{ width: 3.8rem; height: 3.8rem; background:var(--accent); color:var(--bg); display:flex; align-items:center; justify-content:flex-start; font-family:var(--font-display); font-size: 2.8rem; line-height:1; flex:0 0 auto; }
@@ -47,7 +47,7 @@
   .grid-2{ grid-template-columns:1fr 1fr; grid-template-rows: 1fr; }
   .grid-4{ grid-template-columns:repeat(4,1fr); }
   @media (max-width: 1400px){ .grid-4{ grid-template-columns:repeat(2,1fr); } }
-  .tile{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.5rem; display:flex; flex-direction:column; height: 100%; position:relative; overflow:hidden; min-height: 0; }
+  .tile{ background:var(--bg-2); border:1px solid var(--rule); padding: 1.5rem; display:flex; flex-direction:column; position:relative; overflow:hidden; min-height: 0; }
   .tile::before{ content:""; position:absolute; top:0; left:0; right:0; height:0.25rem; background:var(--accent); }
   .tile .label{ font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.08em; font-size: 1.8rem; color:var(--ink-soft); white-space:nowrap; }
   .tile .value{ font-family:var(--font-display); font-weight:400; font-size: clamp(7rem, 17vw, 24rem); line-height:.82; letter-spacing:-.01em; margin-top:0.4rem; }
@@ -72,7 +72,7 @@
   .t-ev.departed .name::before{ content:"▴ "; }
   .t-ev.arrived .name::before{ content:"▾ "; color:var(--positive); }
   .progress{ position:absolute; left:0; right:0; bottom:-1.6rem; height:0.25rem; background:var(--rule); overflow:hidden; }
-  .progress > i{ display:block; height:100%; width:0; background:var(--accent); }
+  .progress > i{ display:block; width:0; background:var(--accent); }
   .slide.active .progress > i{ animation: fill var(--slide-seconds) linear forwards; }
   @keyframes fill{ from{width:0} to{width:100%} }
   .footer{ flex:none; display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size: 0.85rem; color:var(--ink-soft); letter-spacing:.28em; text-transform:uppercase; padding-top:0.6rem; }
